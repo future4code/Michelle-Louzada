@@ -1,0 +1,98 @@
+html{
+    background: url(mulher.jpg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-attachment: fixed;
+}
+#cabecalho {
+    text-align: center;
+    color: antiquewhite;
+    background-color: black;
+    margin: auto;
+    padding: 16px 16px 2px 16px;
+    font-family: 'Cinzel Decorative', cursive;
+    
+
+    
+}
+.links {
+
+    background-color: black;
+    text-align: right;
+    display: block;
+    padding-right: 200px;
+}
+#home{
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#projetos1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#contato1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#home:hover{
+    color: hotpink;
+}
+#projetos1:hover{
+    color: hotpink;
+}
+#contato1:hover{
+    color: hotpink;
+}
+#redes-sociais {
+    background-color: black;
+    color: blanchedalmond;
+    display: flex;
+    margin: 50px 0px 0px 0px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Indie Flower', cursive;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+  i {  
+     font-size: 40px;
+     color: violet;  
+}
+#mprojeto {
+    font-family: 'Indie Flower', cursive;
+    color: hotpink;
+    font-size: 50px;
+    text-align: center;
+}
+#selecao {
+    font-family: 'Boogaloo', cursive;
+    font-size: 26px;
+    color: black;
+    margin-left: 130px;
+    margin-bottom: 5px;
+}
+#selecao:hover {
+    color: hotpink;
+}
+#imglabenu {
+    border: 2px solid black;
+    height: 150px;
+    margin-left: 70px;
+    margin-bottom: 350px;
+}
+#imglabenu:hover {
+    border: 2px solid hotpink;
+}
