@@ -1,0 +1,51 @@
+html{
+    background: url(fundo\ controle-p.jpg);
+    background-repeat: repeat;
+    background-size: 100%
+}
+#cabecalho{
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    margin-bottom: 0px;
+    font-family: 'Indie';
+    padding: 0px;
+}
+.links{
+    background-color: black;
+    color: blanchedalmond;
+    padding: 12px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+ }
+ 
+ #pagina-inicial{
+     margin: 20px;
+     color: white;  
+ }
+ #pagina-inicial:hover{
+     color:blue
+ }
+ #controle{
+     margin: 20px;
+     color: white;
+ }
+ #controle:hover{
+     color: blue;
+ }
+ #add-produtos{
+     margin: 20px;
+     color: white;
+ }
+ #add-produtos:hover{
+     color: blue;
+ }
+ #funcionarios{
+     margin: 20px;
+     color: white;
+ }
+ #funcionarios:hover{
+     color: blue;
+     }

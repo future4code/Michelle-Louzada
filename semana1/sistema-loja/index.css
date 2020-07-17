@@ -1,0 +1,74 @@
+html{
+    background: url(fundo\ site\ mulher.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+#cabecalho{
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    margin-bottom: 0px;
+    margin-right: 150px;
+    font-family: 'Indie';
+    padding: 0px;
+}
+#reinventando{
+    font-size: 25px;
+    margin: flex;
+    color: #1E90FF;
+    margin: 5px 750px 5px 0px;
+    text-align: right;
+}
+
+.links{
+   background-color: black;
+   color: blanchedalmond;
+   padding: 12px;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   margin: 0px 330px 0px 0px;
+   text-align: center;
+   border: 1px solid black;
+}
+
+#pagina-inicial{
+    margin: 20px;
+    color: white;  
+}
+#pagina-inicial:hover{
+    color:blue
+}
+#controle{
+    margin: 20px;
+    color: white;
+}
+#controle:hover{
+    color: blue;
+}
+#add-produtos{
+    margin: 20px;
+    color: white;
+}
+#add-produtos:hover{
+    color: blue;
+}
+#funcionarios{
+    margin: 20px;
+    color: white;
+}
+#funcionarios:hover{
+    color: blue;
+}
+.corpo-tx{
+    font-size: 30px;
+    width: 80%;
+    height: 80%;
+}
+#corpo{
+  font-size: 30px;
+}
+footer{
+    font-size: 20px;
+}
+#img-redes img{
+    width: 50px;
+}
