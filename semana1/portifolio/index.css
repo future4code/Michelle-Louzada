@@ -1,0 +1,116 @@
+html{
+    background: url(mulher.jpg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-attachment: fixed;
+}
+#cabecalho {
+    text-align: center;
+    color: antiquewhite;
+    background-color: black;
+    margin: auto;
+    padding: 16px 16px 2px 16px;
+    font-family: 'Cinzel Decorative', cursive;
+    
+
+    
+}
+.links {
+
+    background-color: black;
+    text-align: right;
+    display: block;
+    padding-right: 200px;
+}
+#home{
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#projetos1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#contato1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#home:hover{
+    color: hotpink;
+}
+#projetos1:hover{
+    color: hotpink;
+}
+#contato1:hover{
+    color: hotpink;
+}
+#ola {
+    color: #A68064;
+    font-family: 'Boogaloo', cursive;
+    margin: 30px 10px 5px 50px;
+    font-size: 100px;
+}
+#um-pouco{
+    color: #A68064;
+    font-family: 'Boogaloo', cursive;
+    margin: 0px 30px 20px 50px;
+    font-size: 30px;
+}
+#aluna {
+    color: #DB7093;
+    font-family: 'Boogaloo', cursive;
+    font-size: 20px;
+    margin: 10px 30px 20px 50px;
+    font-size: 26px;
+}
+.hab-tit {
+    font-family: 'Boogaloo', cursive;
+    font-size: 35px;
+    margin: 80px 10px 10px 50px;
+    color: #A68064;
+}
+.habilidades {
+    font-family: 'Boogaloo', cursive;
+    font-size: 24px;
+    margin: 5px 5px 0px 50px;
+}
+.hab-com {
+    font-family: 'Boogaloo', cursive;
+    font-size: 35px;
+    margin: 80px 10px 10px 10px;
+    margin-left: 7%;
+    color: #A68064;
+}
+.habilidades-com {
+    font-family: 'Boogaloo', cursive;
+    font-size: 24px;
+    margin-left: 6%;  
+}
+#redes-sociais {
+    background-color: black;
+    color: blanchedalmond;
+    display: flex;
+    margin: 50px 0px 0px 0px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Indie Flower', cursive;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+  i {  
+     font-size: 40px;
+     color: violet;
+    
+}
