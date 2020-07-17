@@ -58,9 +58,17 @@ html{
 #funcionarios:hover{
     color: blue;
 }
+.corpo-tx{
+    font-size: 30px;
+    width: 80%;
+    height: 80%;
+}
+#corpo{
+  font-size: 30px;
+}
 footer{
     font-size: 20px;
 }
-#img-redes{
-    image-rendering: auto;
+#img-redes img{
+    width: 50px;
 }
