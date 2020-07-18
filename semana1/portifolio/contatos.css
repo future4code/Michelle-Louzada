@@ -1,5 +1,5 @@
 html{
-    background: url(mulher.jpg);
+    background: url(/css/mulher.jpg);
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center;
@@ -66,3 +66,5 @@ html{
      font-size: 40px;
      color: hotpink
 }
+i:hover {
+    color: #70DBDB

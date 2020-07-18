@@ -11,10 +11,7 @@ html{
     background-color: black;
     margin: auto;
     padding: 16px 16px 2px 16px;
-    font-family: 'Cinzel Decorative', cursive;
-    
-
-    
+    font-family: 'Cinzel Decorative', cursive; 
 }
 .links {
 
@@ -56,6 +53,33 @@ html{
 #contato1:hover{
     color: hotpink;
 }
+#imglab {
+    border: 3px solid black;
+    height: 500px;
+    width: 800px;
+    margin-left: 270px;
+}
+#imgresponsive {
+    margin-left: 100px;
+    height: 500px;
+    width: 330px;
+    border: 3px solid black;  
+}
+#teste-selecao {
+    font-family: 'Boogaloo', cursive;
+    text-align: center;
+    color: hotpink;
+    font-size: 50px;
+}
+#text {
+    font-family: 'Boogaloo', cursive;
+    font-size: 35px;
+    width: 1250px;
+    text-align: justify;
+    margin-left: 260px;
+    color: #A68064;
+    background-color: white;
+}
 #redes-sociais {
     background-color: black;
     color: blanchedalmond;
@@ -64,35 +88,29 @@ html{
     padding: 10px;
     font-size: 20px;
     font-family: 'Indie Flower', cursive;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    align-items: center;
 }
-  i {  
+i {  
      font-size: 40px;
-     color: violet;  
+     color: violet; 
+     margin-left: 0px;
 }
-#mprojeto {
-    font-family: 'Indie Flower', cursive;
-    color: hotpink;
-    font-size: 50px;
-    text-align: center;
+i:hover {
+    color: #70DBDB
 }
-#selecao {
-    font-family: 'Boogaloo', cursive;
-    font-size: 26px;
-    color: black;
-    margin-left: 130px;
-    margin-bottom: 5px;
+.redes-s {
+    margin-left: 170px;
+    margin-right: 0px;
 }
-#selecao:hover {
-    color: hotpink;
+.num-email {
+    margin: 10px;
 }
-#imglabenu {
-    border: 2px solid black;
-    height: 150px;
-    margin-left: 70px;
-    margin-bottom: 350px;
+.icons{
+    margin-left: 0px;
+    margin-right: 10px;
 }
-#imglabenu:hover {
-    border: 2px solid hotpink;
+.icons-1 a {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 3px;
 }

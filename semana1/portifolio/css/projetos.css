@@ -1,0 +1,132 @@
+html{
+    background: url(mulher.jpg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-attachment: fixed;
+}
+#cabecalho {
+    text-align: center;
+    color: antiquewhite;
+    background-color: black;
+    margin: auto;
+    padding: 16px 16px 2px 16px;
+    font-family: 'Cinzel Decorative', cursive;
+    
+
+    
+}
+.links {
+
+    background-color: black;
+    text-align: right;
+    display: block;
+    padding-right: 200px;
+}
+#home{
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#projetos1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#contato1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#home:hover{
+    color: hotpink;
+}
+#projetos1:hover{
+    color: hotpink;
+}
+#contato1:hover{
+    color: hotpink;
+}
+#mprojeto {
+    font-family: 'Indie Flower', cursive;
+    color: hotpink;
+    font-size: 50px;
+    text-align: center;
+    opacity: 1;
+}
+.transbox {
+    margin: 30px;
+    background-color: black;
+    border: 1px solid black;
+    opacity: 0.4;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}   
+#pai{
+    height: 100%;
+    width: 100%;
+}
+#selecao {
+    font-family: 'Boogaloo', cursive;
+    font-size: 26px;
+    color: #E6E8FA;
+    margin-left: 130px;
+    margin-bottom: 5px;
+}
+#selecao:hover {
+    color: hotpink;
+}
+#imglabenu {
+    border: 2px solid black;
+    height: 200px;
+    width: 330px;
+    margin-left: 70px;
+    margin-bottom: 350px;
+}
+#imglabenu:hover {
+    border: 2px solid hotpink;
+}
+#redes-sociais {
+    background-color: black;
+    color: blanchedalmond;
+    display: flex;
+    margin: 50px 0px 0px 0px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Indie Flower', cursive;
+    align-items: center;
+}
+  i {  
+     font-size: 40px;
+     color: violet; 
+     margin-left: 0px;
+}
+i:hover {
+    color: #70DBDB
+}
+.redes-s {
+    margin-left: 170px;
+    margin-right: 0px;
+}
+.num-email {
+    margin: 10px;
+}
+.icons{
+    margin-left: 0px;
+    margin-right: 10px;
+}
+.icons-1 a {
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 3px;
+}
