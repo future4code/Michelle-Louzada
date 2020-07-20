@@ -136,6 +136,10 @@ input{
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    margin-top: 150px;
 }
 
 #back-button:hover {
@@ -150,5 +154,13 @@ input{
     width: 20px;
     height: 20px;
 }
+.icone:hover {
+    opacity: 0.3;
+}
+.icone:active {
+    color: black;
+    opacity: 1;
+}
 td button:hover {
     background-color: #FFA500;
+}
