@@ -1,0 +1,70 @@
+html{
+    background: url(/css/mulher.jpg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    background-attachment: fixed;
+}
+#cabecalho {
+    text-align: center;
+    color: antiquewhite;
+    background-color: black;
+    margin: auto;
+    padding: 16px 16px 2px 16px;
+    font-family: 'Cinzel Decorative', cursive;
+    
+
+    
+}
+.links {
+
+    background-color: black;
+    text-align: right;
+    display: block;
+    padding-right: 200px;
+}
+#home{
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#projetos1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#contato1 {
+    color: gray;
+    font-size: 22px;
+    padding: 0px 20px;
+    margin: 2px;
+    font-family: 'Indie Flower', cursive;
+
+}
+#home:hover{
+    color: hotpink;
+}
+#projetos1:hover{
+    color: hotpink;
+}
+#contato1:hover{
+    color: hotpink;
+}
+#redes-sociais {
+    margin: 50px 0px 0px 0px;
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Boogaloo', cursive;
+}
+  i {  
+     font-size: 40px;
+     color: hotpink
+}
+i:hover {
+    color: #70DBDB
