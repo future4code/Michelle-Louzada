@@ -121,7 +121,11 @@ td button {
     margin-top: 20px;
     height: 100px;
 }
-
+input{
+    border: white;
+    border-bottom: 2px solid black;
+   border-radius: 0px;
+}
 
 #back-button {
     background-color: white;
