@@ -145,3 +145,5 @@ td button {
     width: 20px;
     height: 20px;
 }
+td button:hover {
+    background-color: #FFA500;
