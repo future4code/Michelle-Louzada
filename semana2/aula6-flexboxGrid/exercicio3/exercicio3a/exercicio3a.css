@@ -1,0 +1,81 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+}
+#main-container {
+    diplay: flex;
+    justify-content: flex-start;
+}
+#top-container{
+    display: flex; 
+}
+.green-background {
+    background-color: green;
+    display: flex;
+    width: 350px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.yellow-background {
+    background-color: yellow;
+    display: flex;
+    flex-grow: 1;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pink-background {
+    background-color: fuchsia;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    align-items: center;
+}
+#middle-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.blue-background {
+    background-color: blue;
+    width: 950px;
+    height: 150px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.red-background {
+    background-color: red;
+    width: 500px;
+    height: 75px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.lightgreen-background {
+    background-color: lightgreen;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.purple-background {
+    background-color: purple;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+div {
+    text-align: center;
+}
