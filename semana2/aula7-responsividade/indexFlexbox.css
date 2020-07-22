@@ -1,0 +1,134 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+div {
+    border: 1px solid black;
+    text-align: center;
+}
+#first-block {
+    background-color: red;
+    display: flex;
+    width: 100vw;
+    height: 100px;
+    margin-bottom: 5px;
+}
+#caixas-coloridas{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 0;
+}
+.blue-block {
+    background-color: blue;
+    display: flex;
+    height: 100px;
+    width: 30%;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.yellow-block {
+    background-color: yellow;
+    display: flex;
+    height: 100px;
+    width: 30%; 
+    margin: 5px;  
+    align-items: center;
+    justify-content: center;
+}
+.green-block {
+    background-color: green;
+    display: flex;
+    height: 100px;
+    width: 30%;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;   
+}
+#caixas-pretas {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 0;
+}
+.black-block {
+    background-color: black;
+    color: white;
+    display: flex;
+    height: 350px;
+    width: 48%;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+}
+#caixas-brancas{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 0;
+}
+.white-block {
+    background-color: white;
+    display: flex;
+    height: 100px;
+    width: 30%;
+    margin: 5px;
+    align-items: center;
+    justify-content: center;
+}
+div {
+    text-align: center;
+}
+/* tablets */ 
+@media screen and (min-device-width : 421px) and (max-device-width : 800px) {
+
+.blue-block{
+    display: flex;
+    width: 47%;
+    
+}
+.yellow-block{
+    display: flex;
+    width: 47%;
+
+}
+.green-block {
+    width: 98%;
+    display: flex;
+}
+.black-block{
+    width: 47%;
+}
+.white-block{
+    width: 47%;
+    display: flex;
+}
+#ultima-caixa{
+    width: 100%;
+}
+}
+/* celulares */ 
+@media screen and (min-device-width : 320px) and (max-device-width : 420px) {
+
+#caixas-coloridas{
+    flex-flow: row wrap;
+}
+.blue-block{
+    width: 98%;  
+}
+.yellow-block{
+    width: 98%;
+}
+.green-block{
+    width: 98%;
+}
+.black-block{
+    width: 98%;
+}
+.white-block{
+    width: 98%;
+}
+}

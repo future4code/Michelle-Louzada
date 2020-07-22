@@ -1,0 +1,134 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+div {
+    border: 1px solid black;
+    text-align: center;
+}
+#main-container {
+    display: grid;
+}
+#first-block {
+    background-color: red;
+    display: grid;
+    grid-template-rows: 10vh;  
+}
+#caixas-coloridas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  50% 50%;
+    grid-auto-flow: row;
+    border: 0;
+    margin-top: 5px;
+}
+.blue-block {
+    background-color: blue;
+    display: grid;
+    margin: 5px;
+    height: 100px;
+    align-items: center;
+}
+
+.yellow-block {
+    background-color: yellow;
+    margin: 5px;
+    align-items: center;
+    display: grid;
+}
+
+.green-block {
+    background-color: green;
+    margin: 5px;
+    align-items: center;
+    display: grid;
+}
+#caixas-pretas{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: 0;
+}
+.black-block {
+    background-color: black;
+    color: white;
+    align-items: center;
+    margin: 5px;
+    height: 350px;
+    display: grid;
+}
+#caixas-brancas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 0ch;
+}
+.white-block {
+    background-color: white;
+    align-items: center;
+    display: grid;
+    margin: 5px;
+    height: 100px;
+}
+ /* tablets */ 
+@media screen and (min-device-width : 421px) and (max-device-width : 800px) {
+
+#caixas-coloridas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr
+}  
+.blue-block{
+    display: grid;
+    grid-column: 1;
+}  
+.green-block{
+    display: grid;
+    grid-column: span 2;
+}
+#caixas-brancas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+#ultima-caixa {
+    display: grid;
+    grid-column: span 2;
+}
+}
+ /* celulares */ 
+@media screen and (min-device-width : 320px) and (max-device-width : 420px) {
+
+#caixas-coloridas {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+}
+.blue-block{
+    display: grid;
+    grid-column: span 3;
+} 
+.yellow-block{
+    display: grid;
+    grid-column: span 3;
+}
+.green-block{
+    display: grid;
+    grid-column: span 3;
+}
+#caixas-pretas{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.black-block{
+    display: grid;
+    grid-column: span 3;
+}
+#caixas-brancas {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.white-block{
+    display: grid;
+    grid-column: span 3;
+}
+}
