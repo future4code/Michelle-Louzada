@@ -1,0 +1,59 @@
+    body {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+    
+    header {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 3fr 1fr;
+        background-color: #FF8C00;
+        width: 100vw;
+    }
+    
+    input {
+        border: none;
+        width: 120px;
+        height: 50%;
+        align-self: center;
+        justify-self: end;
+        outline: 0;
+        display: grid;
+        margin-right: 6%;
+    }
+    
+    header h1 {
+        margin-left: 3%;
+    }
+    
+    h2 {
+        margin-left: 40px;
+    }
+    
+    video {
+        width: 98vw;
+        height: 60vh;
+        margin-left: 40px;
+        margin-bottom: 150px;
+    }
+    
+    footer h1 {
+        background-color: black;
+        color: ivory;
+        padding: 20px;
+        font-size: 3em;
+        text-align: center;
+        margin: 0;
+    }
+    /* tablets e celular*/
+    
+    @media screen and (min-device-width: 320px) and (max-device-width: 800px) {
+        video {
+            width: 90vw;
+            margin-left: 20px;
+            height: 40vh;
+            margin-bottom: 270px;
+        }
+    }
