@@ -604,16 +604,16 @@ const array1 = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22]
 
 // **** C. **** 
 
-let arrayPar = []
+// let arrayPar = []
 
-function verificaArray(arrayDeParametro) {
-    for (let elemento of arrayDeParametro) {
-      if(elemento%2 === 0){
-            arrayPar.push()    
-      }
-    }
-    return arrayPar.length 
-}
+// function verificaArray(arrayDeParametro) {
+//     for (let elemento of arrayDeParametro) {
+//       if(elemento%2 === 0){
+//             arrayPar.push()    
+//       }
+//     }
+//     return arrayPar.length 
+// }
 
-const resposta = verificaArray(array1)
-console.log(resposta)
+// const resposta = verificaArray(array1)
+// console.log(resposta)
