@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Controlador de Despesas</title>
+</head>
+<body>
+    <section id="formulario">
+            <h1>Controlador de Despesas:</h1>
+            <h3>Cadastrar Despesa:</h3>
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" value="">
+            <label for="tipo-de-gasto">Tipo(Casa, Jogos, Roupas, etc...):</label>
+            <select name="tipos-de-gasto" id="tipos-de-gasto">
+                <option value="casa">Casa</option>
+                <option value="gasolina">Gasolina</option>
+                <option value="saidas">Saidas Alternativas</option>
+                <option value="alimentação">Alimentação</option>
+                <option value="jogos">Jogos</option>
+                <option value="roupas">Roupas e Acessórios</option>
+            </select>
+            <label for="descrição">Descrição:</label>
+            <input type="text" id="descrição" value="">
+        
+        <button onclick="cadastrar()">Cadastrar Despesas:</button>
+    </section>
+    <section>
+            <h1>Despesas Detalhadas</h1>
+            <label for="tipo-de-gasto">Tipo(Casa, Jogos, Roupas, etc...):</label>
+            <select name="tipos-de-gasto" id="tipos-de-gasto">
+                <option value="casa">Casa</option>
+                <option value="gasolina">Gasolina</option>
+                <option value="saidas">Saidas Alternativas</option>
+                <option value="alimentação">Alimentação</option>
+                <option value="jogos">Jogos</option>
+                <option value="roupas">Roupas e Acessórios</option>
+            </select>
+            <label for="valor-minimo">Valor Mínimo:</label>
+            <input type="number" id="valor-minimo" value="">
+            <label for="valor-maximo">Valor Máximo:</label>
+            <input type="number" id="valor-maximo" value="">
+        <button>Filtar</button>
+        <button>Limpar Filtros</button>
+        <div id="container-de-gastos"></div>
+    </section>
+    <section>
+        <h1>Extrato:</h1>
+        <h3>Valor Total:</h3>
+        <div id="container-do-extrato"></div>
+    </section>
+    
+</body>
+</html>
