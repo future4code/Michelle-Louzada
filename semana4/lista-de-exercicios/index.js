@@ -139,3 +139,9 @@ function operaçõesMaior (numero1, numero2){
 }}
 
 const resultado1 = operaçõesMaior(50, 100)*/
+
+//--------------------------EXERCICIOS DE FUNÇÃO--------------------------------------
+
+//-------------------------1---------------------------------
+
+// const arrayDeNum = [10,12,16,17,20,22]
