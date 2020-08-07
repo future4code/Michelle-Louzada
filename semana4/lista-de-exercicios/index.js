@@ -1,4 +1,4 @@
-// EXERCICIOS DE INTERPRETAÇÃO DE TEXTO
+//-------------------------EXERCICIOS DE INTERPRETAÇÃO DE TEXTO----------------------------------------
 
 //-------------------------1---------------------------------
 
@@ -33,3 +33,109 @@ pede que o numero seja maior que 0 ele atribui esse valor, isso é feito pra ach
 logo um console log nessas variaveis 
 imprime na tela: 1ª (1590) 2ª(-10)
 
+//---------------------EXERCICIOS DE LÓGICA DE PROGRAMAÇÃO-----------------------------------
+
+//-------------------------1---------------------------------
+
+/* 3 maneiras para percorrer uma lista é usando o while, for, for of.
+
+------while-----
+
+let i = 0
+while (1 < 10) {
+    console.log(i)
+
+    i++
+}
+
+---- for -----
+
+for(let i = 0; i < 10; i++){
+    console.log(i)
+}
+
+---- for of ----
+
+const array = [1, 5, 3, 98, 50]
+let maior = 0
+for(let numero of array) {
+    if(numero > maior){
+        maior = numeros
+    }
+}*/
+
+//-------------------------2---------------------------------
+/*
+------a.-----
+false
+
+-----b.----
+false ou false = false
+
+-----c.----
+true && true = true
+
+-----d.-----
+!false ou !true = true
+
+----e.-----
+!true && !true ou false = false*/
+
+//-------------------------3---------------------------------
+/* não funcionava antes por que faltava um numero na const declarada e por que faltava incremento, tambem alterei valor de <= para só <
+
+const quantidadeDeNumerosPares = 5
+let i = 0
+while(i < quantidadeDeNumerosPares) {
+  console.log(i*2)
+  
+  i++
+  
+}*/
+
+//-------------------------4---------------------------------
+/*
+function classificarTriangulo (a, b, c) {
+    if (a === b && a === c && b === c){
+    console.log("Equilátero")
+    }else if(a === b || a === c || b === c){
+        console.log("isosceles")
+    }else if (a !== b && a !== c && b !== c) {
+        console.log("Escaleno")
+    }
+
+}
+const triangulo = classificarTriangulo(10, 10, 10)*/
+
+//-------------------------5---------------------------------
+/*
+let maior = 0
+let subtração = 0
+
+function operaçõesMaior (numero1, numero2){
+    if(numero1 > numero2){
+    maior = numero1
+    }else{
+        maior = numero2
+    }console.log(`O maior número é: ${maior}`)
+    
+    if (numero1 % numero2 ===  0){
+   console.log(`${numero1} é divisível por ${numero2}`)
+    } else if (numero2 % numero1 === 0){
+        console.log(`${numero2} é divisível por ${numero1}`)
+    }
+    if(numero1 % numero2 !== 0){
+    console.log(`${numero1} não é divisível por ${numero2}`)
+    } 
+    if (numero2 % numero1 !== 0){
+    console.log(`${numero2} não é divisível por ${numero1}`)
+    }
+    if(numero1 >= numero2){
+    subtração = numero1 - numero2
+    console.log(`A diferença entre eles é ${subtração}`)
+    }else if (numero2 >= numero1){
+    subtração = numero2 - numero1
+    console.log(`A diferença entre eles é ${subtração}`)
+}}
+
+const resultado1 = operaçõesMaior(50, 100)*/
