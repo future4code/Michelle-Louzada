@@ -144,4 +144,70 @@ const resultado1 = operaçõesMaior(50, 100)*/
 
 //-------------------------1---------------------------------
 
-// const arrayDeNum = [10,12,16,17,20,22]
+/*
+const arrayNumeros = [20, 90, 45, 463, 27, 69, 12, 46]
+
+function segundoMaior(array) {
+
+    let maior = array[0]
+    let menor = array[0]
+
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] > maior) {
+            maior = array[i]
+        }
+    }
+
+    const novoArray = array.filter((elemento) => {
+        return elemento !== maior
+    })
+
+    let segundoMaior = novoArray[0]
+
+    novoArray.forEach((elemento) => {
+        if(elemento > segundoMaior) {
+            segundoMaior = elemento
+        }
+    })
+    
+    console.log(`O segundo maior número do array é ${segundoMaior}`)
+    
+    for(let i = 0; i < array.length; i++) {
+        if(array[i] < menor) {
+            menor = array[i]
+        }
+    }
+
+    const novoArray2 = novoArray.filter((elemento) => {
+        return elemento !== menor
+    })
+
+    let segundoMenor = novoArray2[0]
+
+    novoArray2.forEach((elemento) => {
+        if(elemento < segundoMenor) {
+            segundoMenor = elemento
+        }
+    })
+
+    console.log(`O segundo menor número do array é ${segundoMenor}`)
+
+}  
+
+
+segundoMaior(arrayNumeros)
+*/
+
+//-------------------------2---------------------------------
+
+//  const naoNomeada = () => {
+//     alert("Hello Future4")
+// }
+
+// function alerta() {
+//     naoNomeada()
+// }
+
+// alerta()
+
+ 
