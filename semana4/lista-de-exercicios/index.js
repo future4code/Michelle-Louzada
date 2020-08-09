@@ -210,4 +210,51 @@ segundoMaior(arrayNumeros)
 
 // alerta()
 
- 
+ //--------------------------EXERCICIOS DE OBJETOS------------------------------------
+
+ //------------------1---------------------
+
+ /* objetos são como se fosse uma caixa com divisórias que guarda um valor de determinada coisa.
+ o array de objetos é bom utilizar pra guardar esses objetos que podem ser informações do usuario.*/
+
+ //------------------2---------------------
+/*
+ function criaRetangulo (lado1, lado2){
+    
+    const retangulo = {
+        largura: lado1,
+        altura: lado2,
+        perimetro: 2 * (lado1 + lado2),
+        area: lado1 * lado2
+    }
+    return retangulo
+ }
+ const resultado = criaRetangulo(10, 15)
+ console.log(resultado)*/
+
+ //------------------3---------------------
+/*
+ const filme = {
+     nome: "Interstellar",
+     ano: 2014,
+     diretor: "Christopher Nolan",
+     atores: ["Matthew McConaughey", " Anne Hathaway"]
+ }
+ console.log(`Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores}`)
+ */
+
+ //------------------4---------------------
+/*
+ const pessoaAnonima = {
+     nome: "Michelle",
+     idade: 22,
+     email: "hinatah.louz@gmail.com",
+     endereço: "Cricuma/SC"
+ }
+ function anonimizarPessoa () {
+    return pessoa2 = {
+        ...pessoaAnonima,
+        nome: 'ANONIMO'
+        }
+ }
+ console.log(anonimizarPessoa()) */
