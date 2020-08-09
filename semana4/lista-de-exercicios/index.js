@@ -210,7 +210,7 @@ segundoMaior(arrayNumeros)
 
 // alerta()
 
- //--------------------------EXERCICIOS DE OBJETOS------------------------------------
+ //--------------------------EXERCICIOS DE OBJETOS-------------------------------
 
  //------------------1---------------------
 
@@ -258,3 +258,172 @@ segundoMaior(arrayNumeros)
         }
  }
  console.log(anonimizarPessoa()) */
+
+ //----------------------EXERCICIOS DE FUNÇÕES COM ARRAY---------------------------
+
+ //------------------1---------------------
+
+ /* const array = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+] */
+
+// a)
+/* 
+const idade = array.filter((elemento) => {
+    return elemento.idade >= 20
+})
+// b)
+const menorIdade = array.filter((elemento) => {
+    return elemento.idade < 20
+})
+
+ */
+
+ //------------------2---------------------
+
+ // const exemploArray = [1, 2, 3, 4, 5, 6]
+
+/* function multiplicados(array) {
+
+    const arrayNovo = array.map((elemento) => {
+        return elemento * 2
+    })
+
+    return arrayNovo
+}
+
+
+console.log(multiplicados(exemploArray))
+ */
+
+
+//  b)
+
+/* function multiplicados(array) {
+
+    const arrayNovo = array.map((elemento) => {
+        return elemento * 3
+    })
+
+    return arrayNovo
+
+}
+
+console.log(multiplicados(exemploArray)) */
+
+// c
+
+/* function parOuImpar(array) {
+
+    const arrayNovo = array.map((elemento) => {
+        if(elemento % 2 === 0) {
+            return `O número ${elemento} é par!`
+        } 
+
+        if(elemento % 2 !== 0) {
+            return `O número ${elemento} é impar!`
+        }
+    })
+
+    return arrayNovo
+
+}
+
+console.log(parOuImpar(exemploArray))
+*/
+
+ //------------------3---------------------
+ 
+/* const pessoas = [
+	{ nome: "Paula", idade: 12, altura: 1.8},
+	{ nome: "João", idade: 20, altura: 1.3},
+	{ nome: "Pedro", idade: 15, altura: 1.9},
+	{ nome: "Luciano", idade: 22, altura: 1.8},
+	{ nome: "Artur", idade: 10, altura: 1.2},
+	{ nome: "Soter", idade: 70, altura: 1.9}
+] */
+
+// a)
+
+/* const pessoasPermitidas = pessoas.filter((elemento) => {
+    return elemento.altura >= 1.5 && elemento.idade >= 14 && elemento.idade < 60
+})
+ */
+
+// b)
+/* const pessoasNaoPermitidas = pessoas.filter((elemento) => {
+    return elemento.altura < 1.5 || elemento.idade < 15 || elemento.idade > 60
+})
+
+console.log(pessoasNaoPermitidas) */
+
+ //------------------4---------------------
+ /* const emails = consultas.map((elemento) => {
+
+    if(elemento.cancelada === false) {
+
+       if(elemento.genero === "masculino") {
+
+           return `Olá, Sr. ${elemento.nome}. Estamos enviando esta mensagem para
+           lembrá-lo da sua consulta no dia ${elemento.dataDaConsulta}. Por favor, acuse
+           o recebimento deste e-mail.`
+       } 
+       
+       if (elemento.genero === "feminino")
+
+            return `Olá, Sra. ${elemento.nome}. Estamos enviando esta mensagem para
+            lembrá-la da sua consulta no dia ${elemento.dataDaConsulta}. Por favor, acuse
+            o recebimento deste e-mail.`
+       }
+
+       if(elemento.cancelada) {
+           
+           if(elemento.genero === "masculino") {
+       
+               return `Olá, Sr. ${elemento.nome}. Infelizmente, sua consulta marcada
+               para o dia ${elemento.dataDaConsulta} foi cancelada. Se quiser, pode entrar em 
+               contato conosco para remarcá-la`
+           }
+       
+           if(elemento.genero === "feminino") {
+       
+               return `Olá, Sra. ${elemento.nome}. Infelizmente, sua consulta marcada
+               para o dia ${elemento.dataDaConsulta} foi cancelada. Se quiser, pode entrar em 
+               contato conosco para remarcá-la`
+       
+           }
+       }
+       
+       })    
+
+console.log(emails)
+
+//------------------5---------------------
+/* 
+const contas = [
+	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
+
+const contasAtualizadas = contas.forEach((elemento) => {
+
+    // Declarando variável para a soma dos elmentos no array elemento.compras
+    let soma = 0
+
+    
+    elemento.compras.forEach((elemento) => {
+        soma += elemento
+    }) 
+
+    elemento.saldoTotal = elemento.saldoTotal - soma  
+}
+)
+console.log(contas)
+ */
