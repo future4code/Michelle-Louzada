@@ -8,10 +8,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #6A5ACD;
+    color: #377ebd;
     margin-left: 26px;
     margin-right: 20px;
 }
 .card-header > h4:hover {
-    color: blue;
+    color: bisque
 }
