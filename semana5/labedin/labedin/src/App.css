@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.page-section-container {
+  width: 40vw;
+  margin: 10px 0;
+  margin-top: 80px;
+}
+
+.page-section-container > h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+nav {
+  width: 100%;
+  background: #363636;
+  position: fixed;
+  top: 0;
+  padding: 10px;
+}
+
+nav > ul {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin-right: 10%;
+}
+.miclass {
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #377ebd;
+  font-size: 30px;
+}
+
+input {
+  padding: 10px;
+  height: 58%;
+  width: 100%;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+ ul :nth-child(3) {
+  color: #6A5ACD;
+  display: flex;
+  margin-left: 20%;
+ 
+}
+.logotipo {
+  width: 180px;
+  margin-right: 10px;
+  height: 50px;
+  margin-top: 10px;
+}
