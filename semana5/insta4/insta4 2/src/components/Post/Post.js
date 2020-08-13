@@ -62,6 +62,7 @@ class Post extends React.Component {
       </div>
 
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <p>{this.state.comentando}</p>
 
       <div className={'post-footer'}>
         <IconeComContador
