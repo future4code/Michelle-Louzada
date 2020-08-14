@@ -1,6 +1,7 @@
 import React from 'react'
 import './Post.css'
 
+
 import {IconeComContador} from '../IconeComContador/IconeComContador'
 
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
@@ -13,7 +14,8 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0
+    numeroComentarios: 0,
+    conteudoComentario:[{nome:"", valor:""}]
   }
 
   onClickCurtida = () => {
@@ -33,11 +35,13 @@ class Post extends React.Component {
     })
   }
 
-  aoEnviarComentario = () => {
+  aoEnviarComentario = (event) => {
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      
     })
+     
   }
 
   render() {
@@ -58,10 +62,11 @@ class Post extends React.Component {
     return <div className={'post-container'}>
       <div className={'post-header'}>
         <img className={'user-photo'} src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
-        <p>{this.props.nomeUsuario}</p>
+        
       </div>
 
       <img className={'post-photo'} src={this.props.fotoPost} alt={'Imagem do post'}/>
+      <p>{this.state.comentando}</p>
 
       <div className={'post-footer'}>
         <IconeComContador
