@@ -5,6 +5,10 @@ import SearchPlaylist from './components/SearchPlaylist'
 
 const All = styled.div `
   text-align: center;
+  background-color: black;
+  color: white;
+  width: 100vw;
+  height: 100vh;
 `
 export default class App extends React.Component {
   state = {

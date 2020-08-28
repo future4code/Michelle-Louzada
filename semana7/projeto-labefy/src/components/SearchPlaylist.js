@@ -3,11 +3,13 @@ import axios from 'axios'
 import { axiosConfig } from "../constants/axiosConstants";
 import Playlist from './Playlist'
 import { infoPlaylist } from './Playlist'
+import AddMusic from './AddMusic'
 
 export default class SearchPlaylist extends React.Component {
     state = {
         allPlaylists: [],
         info: false,
+        addMusic: false,
     }
     deletPlaylist = (id) => {
         axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`,
@@ -36,30 +38,44 @@ export default class SearchPlaylist extends React.Component {
             console.log(error)
         })
     }
+   
     onClickInfo = () => {
-        this.setState({info: !this.state.info})
+        this.setState({
+            info: !this.state.info,
+            addMusic: false,
+        })
     }
-    
+    onClickAddMusic = () => {
+        this.setState({
+            addMusic: !this.state.addMusic,
+            info: false,
+        })
+    }
+
     componentDidMount = () => {
         this.allPlaylists()
     }
     render() {
-        const pageInfo = () => {
+        const pageInfo = (id) => {
             if (this.state.info){
-                return <Playlist />
+                return <Playlist idPlaylist={id}/>
+            }
+            if(this.state.addMusic){
+                return <AddMusic idPlaylist={id} />
             }
         }
-        console.log(this.state.info)
         return (
             <div>
                 <h2>TODAS AS PLAYLISTS</h2>
+                
                 {this.state.allPlaylists.map((list) => {
                     return (
                         <div>
                             <h4 key={list.id}>{list.name}</h4>
                             <button onClick={() => { if (window.confirm(`Tem certeza de que deseja deletar ${list.name}?`)) this.deletPlaylist(list.id) }}>Deletar</button>
-                            <button onClick={this.onClickInfo}>info +</button> 
-                            {pageInfo()}
+                            <button onClick={this.onClickInfo}>info +</button>
+                            <button onClick={this.onClickAddMusic}>Adicionar Música</button> 
+                            {pageInfo(list.id)}
                         </div>
                     )
                 })}
