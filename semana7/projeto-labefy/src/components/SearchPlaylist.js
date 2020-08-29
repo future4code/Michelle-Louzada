@@ -79,11 +79,11 @@ export default class SearchPlaylist extends React.Component {
         axiosConfig )
 
         .then((response) => {
-            alert(`Usuario deletado com sucesso!`)
+            alert(`Playlist deletada com sucesso!`)
             this.allPlaylists()
         })
         .catch((error) => {
-            console.log(error)
+            alert(`Não foi possível deletar sua Playlist, por favor tente novamente mais tarde.`)
         })
 
     }

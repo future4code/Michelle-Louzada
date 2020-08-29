@@ -90,7 +90,7 @@ createPlaylist = () => {
         this.setState({namePlaylist: ""})
     })
     .catch((error) => {
-        console.log(error)
+        alert(`Playlist ${this.state.namePlaylist} não foi possível criar, por favor tente novamente!`)
     })
 }
 MouseOver = (event) => {
