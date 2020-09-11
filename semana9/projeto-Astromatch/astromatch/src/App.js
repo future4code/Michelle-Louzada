@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
+import Header from './components/Header'
+import Match from './components/Match'
+import ListMatchs from './components/ListMatchs'
+import { useState, useEffect } from "react";
+
+const myTheme = createMuiTheme ({
+	palette: {
+		primary: {
+			main: "#e91e63" // rosa
+		},
+		secondary: {
+			main: "#f06f5c" // cor Logo
+		}
+	}
+})
 
 function App() {
+	const [pageMatch, setPageMatch] = useState(true)
+	const [pageList, setPageList] = useState(false)
+
+	const renderPage = () => {
+		if(pageMatch === true){
+			return (
+				<Match />
+			)
+		}
+		if(pageList === true) {
+			return (
+				<ListMatchs />
+			)
+		}
+	}
+	const onClickList = () => {
+		setPageMatch(false)
+		setPageList(true)
+	}
+	const onClickMatch = () => {
+		setPageMatch(true)
+		setPageList(false)
+	}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <MuiThemeProvider theme={myTheme}>
+      <Header onClickList={onClickList} onClickMatch={onClickMatch}/>
+	  {renderPage()}
+    </MuiThemeProvider>
+  )
+    
 }
 
 export default App;
