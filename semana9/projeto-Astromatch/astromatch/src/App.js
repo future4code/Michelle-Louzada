@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Match from './components/Match'
 import ListMatchs from './components/ListMatchs'
 import { useState, useEffect } from "react";
+import Footer from './components/Footer'
 
 const myTheme = createMuiTheme ({
 	palette: {
@@ -43,7 +44,8 @@ function App() {
   return (
     <MuiThemeProvider theme={myTheme}>
       <Header onClickList={onClickList} onClickMatch={onClickMatch}/>
-	  {renderPage()}
+	  {renderPage()} 
+	  <Footer />
     </MuiThemeProvider>
   )
     

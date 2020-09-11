@@ -9,13 +9,14 @@ const ImgLogo = styled.img`
     width: 200px;
     height: 85px;
     margin-left: 10px;
-    
-    
 `
 const All = styled.div`
     display: flex;
     justify-content: center;
     border-bottom: 1px solid #EEE9E9;
+    @media(min-width: 800px) {
+        border: none;
+    }
     
 `
 const Icon = styled.div`
@@ -23,6 +24,10 @@ const Icon = styled.div`
     justify-content: flex-end;
     width: 45%;
     padding-top: 10px;
+    @media(min-width: 800px) {
+        width: 160px;
+        
+    }
     
 `
 

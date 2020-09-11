@@ -19,12 +19,17 @@ const Progress = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 150px;
+    height: 82vh;
     
 `
 const Icon = styled.div`
     margin: 15px;
     display: flex;
     justify-content: center;
+    @media(min-width: 800px) {
+        justify-content: none;
+    }
+    
 `
 const ListClear = styled.div`
     display: flex;
@@ -32,6 +37,17 @@ const ListClear = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
+    height: 73vh;
+`
+const All = styled.div`
+    height: 82vh;
+    @media(min-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        margin-left: 40%;
+        border: 1px solid #EEE9E9;
+        width: 400px;
+    }
 `
 
 const useStyles = makeStyles((theme) => ({
@@ -55,48 +71,44 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListMatchs () {
     const classes = useStyles();
-    const [listMatch, setListMatch] = useState([])
-    const [listClear, setListClear] = useState(true)
+    const [listMatch, setListMatch] = useState(null)
+    
 
     useEffect(() => {
         getList();
       }, [])
 
       const getList = () => {
-          axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/matches")
+          axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/michelle/matches")
           
           .then((response) => {
               setListMatch(response.data.matches)
-              if(listMatch.length > 1) {
-                  setListClear(false)
-              }
-              console.log(listMatch)
+        
           })
           .catch((error) => {
-              console.log(error)
+              
           })
       }
-
       const clearMatchs = () => {
-          axios.put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/clear")
+          axios.put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/michelle/clear")
 
           .then((response) => {
               alert(`Lista deletada com sucesso`)
               getList()
           })
           .catch((error) => {
-              console.log(error)
+              alert(`não foi possível deletar a lista, por favor tente mais tarde`)
           })
       }
       
-      if (listMatch === undefined) {
+      if (listMatch === null) {
         return (
             <Progress>
                 <CircularProgress color="secondary" />
             </Progress>
           )
     }
-    if (listClear === true) {
+    if (listMatch.length === 0 ) {
         return (
             <ListClear>
                 <MoodBadIcon color="secondary"  style={{ fontSize: 200 }} />
@@ -104,9 +116,10 @@ export default function ListMatchs () {
             </ListClear>
         )
     }
+
     
     return (
-        <div>
+        <All>
             {listMatch.map((person) => {
                 return (
                     <List className={classes.root}>
@@ -140,6 +153,6 @@ export default function ListMatchs () {
                     <DeleteIcon onClick={clearMatchs} color="primary" fontSize="large" />
                 </IconButton>
             </Icon>
-        </div>
+        </All>
     )
 }

@@ -25,11 +25,21 @@ const All = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    margin-bottom: 10px;
+    
+    @media(min-width: 800px) {
+        border: 1px solid #EEE9E9;
+        width: 400px;
+        height: 780px;
+        margin-left: 40vw;
+        align-items: center;
+    }
 `
 const Progress = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 150px;
+    height: 82vh;
     
 `
 const useStyles = makeStyles((theme) => ({
@@ -40,51 +50,43 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function ImgMediaCard() {
-    const [person, setPerson] = useState()
+    const [person, setPerson] = useState(null)
     const classes = useStyles();
-    const [checked, setChecked] = useState();
     const [idPerson, setIdPerson] = useState("")
 
     useEffect(() => {
         getPerson();
       }, []);
 
-    const handleChangeTrue = () => {
-        setChecked(checked === true);
-  };
-    const handleChangeFalse = () => {
-        setChecked(checked === false);
-  };
-
       const getPerson = () => {
-          axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/person")
+          axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/michelle/person")
           
           .then((response) => {
               setPerson(response.data.profile)
               setIdPerson(response.data.profile.id)
           })
           .catch((error) => {
-              console.log(error)
+              return <p>Não há mais pessoas para dar Match</p> 
           })
       }
-      const getLike = () => {
+      const getLike = (choice) => {
           const body = {
               id: idPerson,
-              choice: checked
+              choice: choice
           }
-          axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/choose-person",
+          axios.post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/michelle/choose-person",
             body )
 
             .then((response) => {
-                console.log(response)
                 getPerson()
             })
             .catch((error) => {
-                console.log(error)
+                alert(`Erro ao dar match`)
             })
       }
+      
 
-      if (person === undefined) {
+      if (person === null) {
           return (
             <Progress>
                 <CircularProgress color="secondary" />
@@ -93,38 +95,37 @@ export default function ImgMediaCard() {
           
       }
   return (
-        <All>
-                
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                alt="Contemplative Reptile"
-                                height="330"
-                                image={person.photo}
-                                title="Contemplative Reptile"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {person.name}, {person.age}
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {person.bio}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                        <CardActions>
-                            <Icon>
-                                <IconButton aria-label="deslike" onClick={handleChangeFalse, getLike} >
-                                    <ThumbDownIcon  style={{ color: red[700], fontSize: 50 }} />
-                                </IconButton>
-                                <IconButton aria-label="like" onClick={handleChangeTrue, getLike}>
-                                    <FavoriteIcon style={{ fontSize: 50 }} color="primary" />
-                                </IconButton>
+        <All>    
+            <Card className={classes.root}>
+                <CardActionArea>
+                    <CardMedia
+                        component="img"
+                        alt="Contemplative Reptile"
+                        height="390"
+                        image={person.photo}
+                        title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {person.name}, {person.age}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {person.bio}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    <Icon>
+                        <IconButton aria-label="deslike" onClick={() => getLike(false)} >
+                            <ThumbDownIcon  style={{ color: red[700], fontSize: 50 }} />
+                        </IconButton>
+                        <IconButton aria-label="like" onClick={() => getLike(true)}>
+                            <FavoriteIcon style={{ fontSize: 50 }} color="primary" />
+                        </IconButton>
                         
-                            </Icon>
-                        </CardActions>
-                    </Card>
+                    </Icon>
+                </CardActions>
+             </Card>
                      
         </All>
   );
