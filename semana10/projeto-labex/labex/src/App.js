@@ -1,7 +1,5 @@
 import React from 'react';
-import Header from './assets/components/Header'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
-import Home from './assets/components/Home'
 import Router from './assets/router/Router'
 
 const myTheme = createMuiTheme ({
@@ -19,7 +17,6 @@ const myTheme = createMuiTheme ({
 function App() {
   return (
       <MuiThemeProvider theme={myTheme}>
-        <Header />
         <Router />
       </MuiThemeProvider>
   );

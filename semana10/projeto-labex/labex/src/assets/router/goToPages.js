@@ -7,3 +7,6 @@ export const goToHomePage = (history) => {
   export const goToLoginPage = (history) => {
     history.push("/login");
   };
+  export const goToFormPage = (history) => {
+    history.push("/formulario");
+  };

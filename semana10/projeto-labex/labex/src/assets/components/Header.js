@@ -56,7 +56,7 @@ export default function Header() {
                             onChange=""
                             onKeyPress=""
                             margin="dense"
-                            color="secondary"
+                            color="primary"
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton 
