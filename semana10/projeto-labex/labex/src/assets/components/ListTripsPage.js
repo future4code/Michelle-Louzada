@@ -10,7 +10,7 @@ import Styled from 'styled-components'
 import useRequestData from '../hooks/useRequestData'
 import { baseUrl } from '../constants/axiosConstants'
 import { useHistory, useParams } from "react-router-dom";
-import { goToFormPage } from '../router/goToPages'
+import { goToFormPage, goToDetailPage } from '../router/goToPages'
 import { styled } from '@material-ui/styles'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -89,6 +89,9 @@ export default function ListTripsPage() {
                         <CardActions>
                             <Buttonn onClick={() => goToFormPage(history, trip.id)} size="small" color="primary">
                                 Inscrever-se
+                             </Buttonn>
+                             <Buttonn onClick={() => goToDetailPage(history, trip.id)} size="small" color="primary">
+                                detalhes
                              </Buttonn>
                         </CardActions>
                     </Cardd>

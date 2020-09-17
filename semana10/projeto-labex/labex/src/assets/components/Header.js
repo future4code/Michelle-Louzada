@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import SearchIcon from '@material-ui/icons/Search'
-import { goToHomePage, goToTripPage, goToLoginPage } from '../router/goToPages'
+import { goToHomePage, goToTripPage, goToLoginPage, goToCreatePage} from '../router/goToPages'
 import { useHistory, useParams } from "react-router-dom";
 
 const ImgLogo = styled.img`
@@ -72,8 +72,10 @@ export default function Header() {
                     </FormControl>
             </Container1>
             <Container2>
+                <SpanStyled onClick={() => goToCreatePage(history) }>Criar Viagem</SpanStyled>
                 <SpanStyled onClick={() => goToTripPage(history)}>Viagens</SpanStyled>
                 <SpanStyled onClick={() => goToLoginPage(history)}>Login</SpanStyled>
+                
             </Container2>
         </All>
     )

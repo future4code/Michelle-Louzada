@@ -126,10 +126,6 @@ export default function Login() {
                  <FormControl className={classes.margin}>
                     <InputLabel htmlFor="input-with-icon-adornment">Email</InputLabel>
                         <Input
-                            validations={{matchRegexp:emailRegex}} 
-                            validationErrors={{matchRegexp:'Enter a valid mobile.'}}
-                            required="true"
-                            requiredError="Email invalido"
                             value={email}
                             onChange={changeEmail}
                             id="input-with-icon-adornment"

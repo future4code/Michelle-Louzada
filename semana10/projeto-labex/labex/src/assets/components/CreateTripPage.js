@@ -10,6 +10,8 @@ import { styled } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
 import useForm from '../hooks/useForm'
 import { useState, useEffect } from 'react'
+import { InputLabel, FormControl } from '@material-ui/core';
+
 
 const FormDiv = styled(Grid)({
     display: "grid",
@@ -31,7 +33,10 @@ const NamesInputField = styled(TextField)({
 const DescriptionInputField = styled(TextField)({
     width: "30vw",
 })
-
+const SelectOption = styled(Select)({
+  width: "30vw",
+  backgroundColor: "#FFFFFF",
+})
 
 
 export default function CreateTripPage() {
@@ -41,18 +46,18 @@ export default function CreateTripPage() {
         const token = window.localStorage.getItem("token");
     
         if (token) {
-          createTrip();
+         
         } else {
           history.push("/login");
         }
       }, [history]);
 
     const { form, onChange, resetState } = useForm({
-        name: "",
+        nameTrip: "",
         planet: "",
         date: "",
         description: "",
-        durationInDays: "",
+        durationInDays: 0,
       });
     
       const handleInputChange = (event) => {
@@ -63,38 +68,58 @@ export default function CreateTripPage() {
     
       const createTrip = () => {    
         const body = {
-            name: form.name,
+            name: form.nameTrip,
             planet: form.planet,
             date: form.date,
             description: form.description,
             durationInDays: form.durationInDays,
         }
-        axios.post(`${baseUrl}/trips`, {
+        axios.post(`${baseUrl}/trips`, body , {
             headers: {
               auth: localStorage.getItem("token")
             }
-          }, body)
+          })
         .then((response) => {
-            console.log(response)
+            alert(`viagem criada com sucesso!`)
         })
         .catch((error) => {
-           console.log(error)
+           alert(`Surgiu algum erro, por favor insira todas as informações corretamente`)
         })
     
         resetState();
       };
 
     return (
-        <form noValidate autoComplete="off">
+        
         <FormDiv container>
-            <h2>Inscrição</h2>
-            <NamesInputField type="text" name="name" variant="outlined" required inputProps={{ pattern: "[A-Za-z]{3,}" }}
-            placeholder="Nome da Viagem" value={form.name} helperText="Incorrect entry." onChange={handleInputChange} />
+            <h2>Crie uma viagem</h2>
+            <NamesInputField type="text" name="nameTrip" variant="outlined" required inputProps={{ pattern: "[A-Za-z]{3,}" }}
+            placeholder="nome da viagem" value={form.nameTrip}  onChange={handleInputChange} />
+            <FormControl variant="outlined">
+                        <InputLabel id="category-label">Planetas</InputLabel>
+                        <SelectOption
+                            name="planet"
+                            labelId="planet-label"
+                            label="planet"
+                            native
+                            variant="outlined"
+                            value={form.planet} 
+                            onChange={handleInputChange}
+                        >
+                            <option value=""/>
+                            <option value="mercurio">Mercúrio</option>
+                            <option value="venus">Vênus</option>
+                            <option value="terra">Terra</option>
+                            <option value="marte">Marte</option>
+                            <option value="jupter">Júpter</option>
+                            <option value="saturno">Saturno</option>
+                            <option value="urano">Urano</option>
+                            <option value="netuno">Netuno</option>
+                            <option value="plutao">Plutão</option>
+                        </SelectOption>  
+                    </FormControl>
             
-            <InputField type="text" name="planet" variant="outlined" required 
-            placeholder="planeta" value={form.planet} onChange={handleInputChange} />
-            
-            <InputField type="text" name="date" variant="outlined" required
+            <InputField type="date" name="date" variant="outlined" required
             placeholder="data" value={form.date} onChange={handleInputChange} />
             
             <DescriptionInputField type="text" name="description" variant="outlined" 
@@ -107,11 +132,11 @@ export default function CreateTripPage() {
             <Button 
                 variant="contained" 
                 color="primary" 
-                onClick=""
+                onClick={createTrip}
             >
                 Enviar
             </Button>
         </FormDiv>
-    </form>
+    
     )
 }

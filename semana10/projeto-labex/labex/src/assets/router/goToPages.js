@@ -10,3 +10,9 @@ export const goToHomePage = (history) => {
   export const goToFormPage = (history, id) => {
     history.push(`/viagens/formulario/${id}`);
   };
+  export const goToCreatePage = (history) => {
+    history.push(`/criarViagem`);
+  };
+  export const goToDetailPage = (history, id) => {
+    history.push(`/viagens/detalhes/${id}`);
+  };
