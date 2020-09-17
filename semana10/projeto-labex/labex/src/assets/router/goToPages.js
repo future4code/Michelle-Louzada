@@ -7,6 +7,6 @@ export const goToHomePage = (history) => {
   export const goToLoginPage = (history) => {
     history.push("/login");
   };
-  export const goToFormPage = (history) => {
-    history.push("/formulario");
+  export const goToFormPage = (history, id) => {
+    history.push(`/viagens/formulario/${id}`);
   };

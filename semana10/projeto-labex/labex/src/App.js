@@ -1,6 +1,8 @@
 import React from 'react';
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
 import Router from './assets/router/Router'
+import ApplicationFormPage from './assets/components/ApplicationFormPage';
+import Header from './assets/components/Header'
 
 const myTheme = createMuiTheme ({
 	palette: {

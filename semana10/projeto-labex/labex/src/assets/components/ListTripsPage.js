@@ -87,7 +87,7 @@ export default function ListTripsPage() {
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Buttonn onClick={() => goToFormPage(history)}size="small" color="primary">
+                            <Buttonn onClick={() => goToFormPage(history, trip.id)} size="small" color="primary">
                                 Inscrever-se
                              </Buttonn>
                         </CardActions>

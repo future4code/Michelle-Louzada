@@ -4,10 +4,20 @@ import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
 import Styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import {baseUrl} from '../constants/axiosConstants'
-
+import { useHistory } from "react-router-dom";
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const FormDiv = styled(Grid)({
     display: "grid",
@@ -19,9 +29,6 @@ const FormDiv = styled(Grid)({
     marginTop: "100px;"
 })
 
-const InputField = styled(TextField)({
-    width: "18vw",
-})
 const Buttonn = styled(Button)({
     width: "150px",
     marginTop: "30px"
@@ -33,6 +40,22 @@ const Cadastrar = Styled.span`
         color: #4169E1;
     } 
 `
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+      margin: {
+        margin: theme.spacing(1),
+      },
+      withoutLabel: {
+        marginTop: theme.spacing(3),
+      },
+      textField: {
+        width: '25ch',
+      },
+    }));
 
 const useInput = () => {
     const [value, setValue] = useState("");
@@ -46,40 +69,106 @@ const useInput = () => {
 
 
 export default function Login() {
-    const [email, changeEmail ] = useInput();
-    const [password, changePassword ] = useInput();
+    const emailRegex = new RegExp('/\S+@\S+\.\S+/');
+    const classes = useStyles();
+    const history = useHistory()
+    const [email, changeEmail] = useInput()
+    const [values, setValues] = React.useState({
+        password: '',
+        showPassword: false,
+      });
+    
 
+    
     const login = () => {
         const body = {
             email: email,
-            password: password
+            password: values.password
         }
         axios.post(`${baseUrl}/login`, body)
         .then((response) => {
-            console.log(response)
+            localStorage.setItem("token", response.data.token);
+            history.push("/criarViagem");
         })
         .catch((error) => {
             console.log(error.messege)
         })
     }
-    console.log(email, password)
+    useEffect(() => {
+        const token = window.localStorage.getItem("token");
+
+        if (token) {
+            history.push("/criarViagem");
+          }
+        }, [history]);
+
+        const handleChange = (prop) => (event) => {
+            setValues({ ...values, [prop]: event.target.value });
+          };
+        
+          const handleClickShowPassword = () => {
+            setValues({ ...values, showPassword: !values.showPassword });
+          };
+        
+          const handleMouseDownPassword = (event) => {
+            event.preventDefault();
+          };
+
+        const pressEnter = (event) => {
+            if (event.key === 'Enter'){
+             login()
+          } }
 
     return (
         <div>
             <FormDiv container>
-                    <h2>Login/Entrar</h2>
-                    <InputField type="text" name="email" variant="outlined" 
-                        placeholder="Email" value={email} onChange={changeEmail} />
-                    <InputField type="password" name="Password" variant="outlined" 
-                        placeholder="Password" value={password} onChange={changePassword} />
-                    <Buttonn 
-                        variant="contained" 
-                        color="primary" 
-                        onClick={login}
-                    >
-                        entrar
-                    </Buttonn>
-                    <p>Caso não tenha cadastro clique em <Cadastrar>cadastrar</Cadastrar></p>
+                <h2>Login</h2>
+                 <FormControl className={classes.margin}>
+                    <InputLabel htmlFor="input-with-icon-adornment">Email</InputLabel>
+                        <Input
+                            validations={{matchRegexp:emailRegex}} 
+                            validationErrors={{matchRegexp:'Enter a valid mobile.'}}
+                            required="true"
+                            requiredError="Email invalido"
+                            value={email}
+                            onChange={changeEmail}
+                            id="input-with-icon-adornment"
+                            startAdornment={
+                            <InputAdornment position="start">
+                                <AccountCircle />
+                            </InputAdornment>
+                            }
+                         />
+                </FormControl>
+                <FormControl className={clsx(classes.margin, classes.textField)}>
+                    <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                        <Input
+                            id="standard-adornment-password"
+                            type={values.showPassword ? 'text' : 'password'}
+                            value={values.password}
+                            onChange={handleChange('password')}
+                            onKeyDown={pressEnter}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                    >
+                                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                         />
+                        </FormControl>
+                            <Buttonn 
+                                variant="contained" 
+                                color="primary" 
+                                onClick={login}
+                            >
+                                entrar
+                            </Buttonn>
+                            <p>Caso não tenha cadastro clique em <Cadastrar>cadastrar</Cadastrar></p>
                 </FormDiv>
             
         </div>

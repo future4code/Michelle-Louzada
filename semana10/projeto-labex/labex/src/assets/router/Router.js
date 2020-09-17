@@ -26,7 +26,7 @@ const Router = () => {
             <Header />
             <TripDetailsPage />
           </Route>
-          <Route exact path="/formulario">
+          <Route exact path="/viagens/formulario/:id">
             <Header />
             <ApplicationFormPage />
           </Route>
@@ -34,7 +34,7 @@ const Router = () => {
               <Header />
               <Login />
           </Route>
-          <Route exact path="/login/criarViagem">
+          <Route exact path="/criarViagem">
               <Header />
               <CreateTripPage />
           </Route>
