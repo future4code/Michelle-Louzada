@@ -1,5 +1,4 @@
 import React from "react"; 
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/styles'
 import Grid from '@material-ui/core/Grid'
@@ -18,7 +17,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import {goToSingUpPage} from '../router/goToPages'
+import {goToLoginPage} from '../router/goToPages'
 
 const FormDiv = styled(Grid)({
     display: "grid",
@@ -86,10 +85,10 @@ export default function Login() {
             email: email,
             password: values.password
         }
-        axios.post(`${baseUrl}/login`, body)
+        axios.post(`${baseUrl}/singup`, body)
         .then((response) => {
-            localStorage.setItem("token", response.data.token);
-            history.push("/criarViagem");
+            alert(`Cadastro realizado com sucesso!`)
+            history.push("/login");
         })
         .catch((error) => {
             console.log(error.messege)
@@ -99,7 +98,7 @@ export default function Login() {
         const token = window.localStorage.getItem("token");
 
         if (token) {
-            history.push("/criarViagem");
+            history.push("/login");
           }
         }, [history]);
 
@@ -123,7 +122,7 @@ export default function Login() {
     return (
         <div>
             <FormDiv container>
-                <h2>Login</h2>
+                <h2>Cadastro</h2>
                  <FormControl className={classes.margin}>
                     <InputLabel htmlFor="input-with-icon-adornment">Email</InputLabel>
                         <Input
@@ -165,7 +164,7 @@ export default function Login() {
                             >
                                 entrar
                             </Buttonn>
-                            <p>Caso não tenha cadastro clique em <Cadastrar onClick={() => goToSingUpPage(history)}>cadastrar</Cadastrar></p> 
+                            <p>Caso já possua cadastro clique em <Cadastrar onClick={() => goToLoginPage(history)}>Login</Cadastrar></p> 
                 </FormDiv>
             
         </div>

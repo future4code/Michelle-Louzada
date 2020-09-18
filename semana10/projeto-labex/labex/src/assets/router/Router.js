@@ -8,6 +8,9 @@ import CreateTripPage from '../components/CreateTripPage'
 import Login from '../components/Login'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import SingUp from '../components/SingUp'
+
+import DetailsCandidates from '../components/DetailsCandidates';
 
 const Router = () => {
     return (
@@ -33,6 +36,10 @@ const Router = () => {
           <Route exact path="/login">
               <Header />
               <Login />
+          </Route>
+          <Route exact path="/login/singup">
+              <Header />
+              <SingUp />
           </Route>
           <Route exact path="/criarViagem">
               <Header />

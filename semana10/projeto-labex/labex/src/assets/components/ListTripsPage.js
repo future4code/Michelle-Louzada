@@ -19,6 +19,7 @@ const All = Styled.div`
     margin: 24px auto;
     padding: 0 24px;
     text-align: center;
+    
 `
 const Progress = Styled.div`
     display: flex;
@@ -27,12 +28,20 @@ const Progress = Styled.div`
     height: 82vh;
     
 `
+const Container = Styled.div`
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+`
 const ProductsListContainer= Styled.div`
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
+    
 `
 const Cardd = styled(Card)({
     width: "400px",
@@ -67,6 +76,7 @@ export default function ListTripsPage() {
   return (
     <All>
         <h2>Viagens</h2>
+        <Container>
         {trips.map((trip) => {
              const idTrip = trip.id
             return (
@@ -90,14 +100,15 @@ export default function ListTripsPage() {
                             <Buttonn onClick={() => goToFormPage(history, trip.id)} size="small" color="primary">
                                 Inscrever-se
                              </Buttonn>
-                             <Buttonn onClick={() => goToDetailPage(history, trip.id)} size="small" color="primary">
+                             {localStorage.getItem("token") ? <Buttonn onClick={() => goToDetailPage(history, trip.id)} size="small" color="primary"> 
                                 detalhes
-                             </Buttonn>
+                             </Buttonn> : <p></p> }
                         </CardActions>
                     </Cardd>
                 </ProductsListContainer>
             )
         })}
+        </Container>
     </All>
   );
 }

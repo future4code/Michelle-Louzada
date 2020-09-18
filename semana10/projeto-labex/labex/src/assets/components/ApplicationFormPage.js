@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button';
@@ -10,6 +10,7 @@ import { baseUrl } from "../constants/axiosConstants"
 import useForm from '../hooks/useForm'
 import { useParams, useHistory } from "react-router-dom";
 import { goToTripPage } from '../router/goToPages';
+import useRequestData from '../hooks/useRequestData'
 
 const FormDiv = styled(Grid)({
     display: "grid",
@@ -37,19 +38,20 @@ const SelectOption = styled(Select)({
 })
 
 export default function ApplicationFormPage() {
-    const pathParams = useParams();
+    const params = useParams();
     const history = useHistory()
     const { form, onChange, resetState } = useForm({
         name: "",
         age: 0,
         profession: "",
         applicationText: "",
-        country: "",
+        // country: "",
       });
     
       const handleInputChange = (event) => {
         const { name, value } = event.target;
-    
+        
+        
         onChange(name, value);
       };
     
@@ -59,9 +61,9 @@ export default function ApplicationFormPage() {
             age: form.age,
             applicationText: form.applicationText,
             profession: form.profession,
-            country: form.country,
+            country: country
         }
-        axios.post(`${baseUrl}/trips/id/apply`, body)
+        axios.post(`${baseUrl}/trips/${params.id}/apply`, body)
         .then((response) => {
             alert(`Sua inscrição foi realizada com sucesso!`)
             goToTripPage(history)
@@ -73,8 +75,27 @@ export default function ApplicationFormPage() {
         resetState();
       };
 
+      const [country, setCountry] = useState()
 
-        
+      const getCountry = () => {
+          axios.get("https://restcountries.eu/rest/v2/all")
+          .then((response) => {
+              setCountry(response.data)
+
+          })
+          .catch((error) => {
+              console.log(error)
+          })
+      }
+
+      useEffect(() => {
+        getCountry()
+      }, [] );
+
+    const onChangeCountry = (event) => {
+        setCountry(event.target.value)
+        console.log(country)
+    }
     return (
         <div>
             
@@ -93,23 +114,30 @@ export default function ApplicationFormPage() {
                 <DescriptionInputField type="text" name="applicationText" variant="outlined" 
                 multiline rows={10} placeholder={"Conte-nos sua motivação"} value={form.applicationText} 
                 onChange={handleInputChange} required />
-                
-                <FormControl variant="outlined">
-                        <InputLabel id="category-label">País</InputLabel>
+        
+                        <FormControl variant="outlined">
+                        <InputLabel id="category-label">Pais</InputLabel>
                         <SelectOption
-                            name="country"
+                            name={country}
                             labelId="country-label"
-                            label="contry"
-                            required
+                            label="country"
                             native
                             variant="outlined"
-                            value={form.country} 
-                            onChange={handleInputChange}
+                            value={country}
+                            onChange={onChangeCountry}
                         >
-                            <option value=""/>
-                            <option value="instruments">Brasil</option>
+                            <option value="" ></option>
+                            {country && country.map((c) => {
+                                return (                          
+                                    <option value={c.name}>{c.name}</option>
+                                )
+                            })}
+                            
+                            
                         </SelectOption>  
                     </FormControl>
+                    
+                
                 <Button 
                     variant="contained" 
                     color="primary" 
@@ -123,3 +151,4 @@ export default function ApplicationFormPage() {
         </div>
     )
 }
+

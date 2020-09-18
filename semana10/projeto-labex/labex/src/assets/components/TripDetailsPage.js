@@ -5,12 +5,16 @@ import { useProtectPage } from "../hooks/useProtectPage";
 import {baseUrl} from '../constants/axiosConstants'
 import styled from 'styled-components'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import DetailsCandidates from "./DetailsCandidates";
 
 const All = styled.div`
     max-width: 1024px;
-    margin: 24px auto;
+    margin: 5px auto;
     padding: 0 24px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 `
 const Progress = styled.div`
     display: flex;
@@ -44,7 +48,6 @@ function TripDetailsPage() {
         }
       })
       .then((response) => {
-        console.log(response.data.trip);
         setTrips(response.data.trip.candidates);
       })
       .catch((err) => {
@@ -58,13 +61,13 @@ function TripDetailsPage() {
         </Progress>
       )
 }
-
   
   return (
     <All>
+      <h2>Candidatos</h2>
       {trip.map((details) => {
           return (
-              <h3>detalhes</h3>
+              <All>{details ? <DetailsCandidates info={details} /> : <CircularProgress /> }</All>
           )
       })}
     </All>
