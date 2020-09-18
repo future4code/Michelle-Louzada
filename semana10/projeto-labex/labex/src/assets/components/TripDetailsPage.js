@@ -3,20 +3,21 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useProtectPage } from "../hooks/useProtectPage";
 import {baseUrl} from '../constants/axiosConstants'
-import styled from 'styled-components'
+import Styled from 'styled-components'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import DetailsCandidates from "./DetailsCandidates";
+import { useParams} from "react-router-dom";
 
-const All = styled.div`
+const All = Styled.div`
     max-width: 1024px;
     margin: 5px auto;
     padding: 0 24px;
     text-align: center;
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    height: 80vh;
 `
-const Progress = styled.div`
+const Progress = Styled.div`
     display: flex;
     justify-content: center;
     margin-top: 150px;
@@ -25,6 +26,7 @@ const Progress = styled.div`
 `
 
 function TripDetailsPage() {
+  const params = useParams();
   const [trip, setTrips] = useState([null]);
 
 
@@ -42,7 +44,7 @@ function TripDetailsPage() {
 
   const getTripDetail = () => {
     axios
-      .get(`${baseUrl}/trip/id`, {
+      .get(`${baseUrl}/trip/${params.id}`, {
         headers: {
           auth: localStorage.getItem("token")
         }

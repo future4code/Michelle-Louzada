@@ -18,12 +18,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import {goToSingUpPage} from '../router/goToPages'
+import {goToSignUpPage} from '../router/goToPages'
 
 const FormDiv = styled(Grid)({
     display: "grid",
     gap: "1em",
-    alignItems: "center",
     justifyItems: "center",
     width: "100vw",
     marginBottom: "50px",
@@ -32,7 +31,8 @@ const FormDiv = styled(Grid)({
 
 const Buttonn = styled(Button)({
     width: "150px",
-    marginTop: "30px"
+    marginTop: "5px",
+    height: "35px"
 })
 
 const Cadastrar = Styled.span`
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
       },
       withoutLabel: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(1),
       },
       textField: {
         width: '25ch',
@@ -165,7 +165,7 @@ export default function Login() {
                             >
                                 entrar
                             </Buttonn>
-                            <p>Caso não tenha cadastro clique em <Cadastrar onClick={() => goToSingUpPage(history)}>cadastrar</Cadastrar></p> 
+                            <p>Caso não tenha cadastro clique em <Cadastrar onClick={() => goToSignUpPage(history)}>cadastrar</Cadastrar></p> 
                 </FormDiv>
             
         </div>

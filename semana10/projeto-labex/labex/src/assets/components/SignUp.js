@@ -26,7 +26,7 @@ const FormDiv = styled(Grid)({
     justifyItems: "center",
     width: "100vw",
     marginBottom: "50px",
-    marginTop: "100px;"
+    marginTop: "100px",
 })
 
 const Buttonn = styled(Button)({
@@ -68,7 +68,7 @@ const useInput = () => {
   };
 
 
-export default function Login() {
+export default function SingUp() {
     const emailRegex = new RegExp('/\S+@\S+\.\S+/');
     const classes = useStyles();
     const history = useHistory()
@@ -80,12 +80,12 @@ export default function Login() {
     
 
     
-    const login = () => {
+    const singUp = () => {
         const body = {
             email: email,
             password: values.password
         }
-        axios.post(`${baseUrl}/singup`, body)
+        axios.post(`${baseUrl}/signup`, body)
         .then((response) => {
             alert(`Cadastro realizado com sucesso!`)
             history.push("/login");
@@ -94,13 +94,6 @@ export default function Login() {
             console.log(error.messege)
         })
     }
-    useEffect(() => {
-        const token = window.localStorage.getItem("token");
-
-        if (token) {
-            history.push("/login");
-          }
-        }, [history]);
 
         const handleChange = (prop) => (event) => {
             setValues({ ...values, [prop]: event.target.value });
@@ -116,9 +109,9 @@ export default function Login() {
 
         const pressEnter = (event) => {
             if (event.key === 'Enter'){
-             login()
+             singUp()
           } }
-
+console.log(values.password, email)
     return (
         <div>
             <FormDiv container>
@@ -160,7 +153,7 @@ export default function Login() {
                             <Buttonn 
                                 variant="contained" 
                                 color="primary" 
-                                onClick={login}
+                                onClick={singUp}
                             >
                                 entrar
                             </Buttonn>

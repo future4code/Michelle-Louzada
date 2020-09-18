@@ -12,9 +12,6 @@ import useForm from '../hooks/useForm'
 import { useState, useEffect } from 'react'
 import { InputLabel, FormControl } from '@material-ui/core';
 
-
-
-
 const FormDiv = styled(Grid)({
     display: "grid",
     gap: "1em",
@@ -59,7 +56,7 @@ export default function CreateTripPage() {
         planet: "",
         date: "",
         description: "",
-        durationInDays: 0,
+        durationInDays: "",
       });
     
       const handleInputChange = (event) => {

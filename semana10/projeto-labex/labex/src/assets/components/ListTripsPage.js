@@ -9,10 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import Styled from 'styled-components'
 import useRequestData from '../hooks/useRequestData'
 import { baseUrl } from '../constants/axiosConstants'
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { goToFormPage, goToDetailPage } from '../router/goToPages'
 import { styled } from '@material-ui/styles'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import axios from 'axios'
+import Footer from './Footer'
 
 const All = Styled.div`
     max-width: 1024px;
@@ -43,12 +45,19 @@ const ProductsListContainer= Styled.div`
     gap: 1em;
     
 `
+const ContainerB = Styled.div`
+    margin: 24px auto;
+    padding: 0 24px;
+    width: 320px;
+`
+
 const Cardd = styled(Card)({
     width: "400px",
 })
 const Buttonn = styled(Button)({
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    margin: "5px"
 })
 
 const useStyles = makeStyles({
@@ -65,13 +74,25 @@ export default function ListTripsPage() {
     []
   );
   
-//   if (trips === undefined) {
-//     return (
-//         <Progress>
-//             <CircularProgress color="secondary" />
-//         </Progress>
-//       )
-// }
+const deletTrip = (id) => {
+    axios.delete(`${baseUrl}/trips/${id}`)
+
+    .then((response) => {
+        alert(`Viagem deletada com sucesso!`)
+        setTrips()
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
+
+  if (trips === undefined) {
+    return (
+        <Progress>
+            <CircularProgress color="secondary" />
+        </Progress>
+      )
+}
 
   return (
     <All>
@@ -80,7 +101,7 @@ export default function ListTripsPage() {
         {trips.map((trip) => {
              const idTrip = trip.id
             return (
-                <ProductsListContainer>
+                <ProductsListContainer key={trip.id}>
                     <Cardd className={classes.root}>
                         <CardActionArea>
                             <CardContent>
@@ -96,14 +117,19 @@ export default function ListTripsPage() {
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
-                        <CardActions>
-                            <Buttonn onClick={() => goToFormPage(history, trip.id)} size="small" color="primary">
-                                Inscrever-se
-                             </Buttonn>
-                             {localStorage.getItem("token") ? <Buttonn onClick={() => goToDetailPage(history, trip.id)} size="small" color="primary"> 
-                                detalhes
-                             </Buttonn> : <p></p> }
-                        </CardActions>
+                        <ContainerB>
+                            <CardActions>
+                                <Buttonn onClick={() => goToFormPage(history, trip.id)} size="small" color="primary">
+                                    Inscrever-se
+                                </Buttonn>
+                                    {localStorage.getItem("token") ? <Buttonn onClick={() => goToDetailPage(history, trip.id)} size="small" color="primary"> 
+                                    detalhes
+                                </Buttonn> : <p></p> }
+                                    {localStorage.getItem("token") ? <Buttonn onClick={() => deletTrip(trip.id)} size="small" color="primary"> 
+                                        deletar
+                                </Buttonn> : <p></p> }
+                            </CardActions>
+                        </ContainerB>
                     </Cardd>
                 </ProductsListContainer>
             )

@@ -10,7 +10,6 @@ import { baseUrl } from "../constants/axiosConstants"
 import useForm from '../hooks/useForm'
 import { useParams, useHistory } from "react-router-dom";
 import { goToTripPage } from '../router/goToPages';
-import useRequestData from '../hooks/useRequestData'
 
 const FormDiv = styled(Grid)({
     display: "grid",
@@ -42,26 +41,26 @@ export default function ApplicationFormPage() {
     const history = useHistory()
     const { form, onChange, resetState } = useForm({
         name: "",
-        age: 0,
+        age: "",
         profession: "",
         applicationText: "",
         // country: "",
       });
     
-      const handleInputChange = (event) => {
+    const handleInputChange = (event) => {
+       
         const { name, value } = event.target;
-        
-        
+
         onChange(name, value);
       };
     
-      const handleSubmittion = () => {    
+    const handleSubmittion = () => {    
         const body = {
             name: form.name,
             age: form.age,
             applicationText: form.applicationText,
             profession: form.profession,
-            country: country
+            country: selectedCountry
         }
         axios.post(`${baseUrl}/trips/${params.id}/apply`, body)
         .then((response) => {
@@ -75,12 +74,13 @@ export default function ApplicationFormPage() {
         resetState();
       };
 
-      const [country, setCountry] = useState()
+    const [countryList, setCountryList] = useState()
+    const [selectedCountry, setSelectedCountry] = useState()
 
-      const getCountry = () => {
+        const getCountry = () => {
           axios.get("https://restcountries.eu/rest/v2/all")
           .then((response) => {
-              setCountry(response.data)
+            setCountryList(response.data)
 
           })
           .catch((error) => {
@@ -93,14 +93,12 @@ export default function ApplicationFormPage() {
       }, [] );
 
     const onChangeCountry = (event) => {
-        setCountry(event.target.value)
-        console.log(country)
+        setSelectedCountry(event.target.value)
     }
+
     return (
         <div>
-            
             <FormDiv container>
-                
                 <h2>Inscrição</h2>
                 <NamesInputField type="text" name="name" variant="outlined" required inputProps={{ pattern: "[A-Za-z]{3,}", }}
                 placeholder="Nome" value={form.name} onChange={handleInputChange}   /> 
@@ -115,29 +113,25 @@ export default function ApplicationFormPage() {
                 multiline rows={10} placeholder={"Conte-nos sua motivação"} value={form.applicationText} 
                 onChange={handleInputChange} required />
         
-                        <FormControl variant="outlined">
+                    <FormControl variant="outlined">
                         <InputLabel id="category-label">Pais</InputLabel>
                         <SelectOption
-                            name={country}
+                            name={selectedCountry}
                             labelId="country-label"
                             label="country"
                             native
                             variant="outlined"
-                            value={country}
+                            value={selectedCountry}
                             onChange={onChangeCountry}
                         >
                             <option value="" ></option>
-                            {country && country.map((c) => {
+                            {countryList && countryList.map((c) => {
                                 return (                          
-                                    <option value={c.name}>{c.name}</option>
+                                    <option key={c.id} value={c.name}>{c.name}</option>
                                 )
-                            })}
-                            
-                            
+                            })}   
                         </SelectOption>  
-                    </FormControl>
-                    
-                
+                    </FormControl>   
                 <Button 
                     variant="contained" 
                     color="primary" 
@@ -145,9 +139,7 @@ export default function ApplicationFormPage() {
                 >
                     Enviar
                 </Button>
-              
             </FormDiv>
-        
         </div>
     )
 }

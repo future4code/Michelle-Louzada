@@ -6,8 +6,8 @@ import FormControl from '@material-ui/core/FormControl'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import SearchIcon from '@material-ui/icons/Search'
-import { goToHomePage, goToTripPage, goToLoginPage, goToCreatePage} from '../router/goToPages'
-import { useHistory, useParams } from "react-router-dom";
+import { goToHomePage, goToTripPage, goToLoginPage, goToCreatePage, deletToken} from '../router/goToPages'
+import { useHistory } from "react-router-dom";
 
 const ImgLogo = styled.img`
     width: 250px;
@@ -74,7 +74,7 @@ export default function Header() {
             <Container2>
                 {localStorage.getItem("token") ? <SpanStyled onClick={() => goToCreatePage(history) }>Criar Viagem</SpanStyled> : <p></p>}
                 <SpanStyled onClick={() => goToTripPage(history)}>Viagens</SpanStyled>
-                {localStorage.getItem("token") ? <SpanStyled onClick={() => goToLoginPage(history)}>Deslogar</SpanStyled> :  <SpanStyled onClick={() => goToLoginPage(history)}>Login</SpanStyled>}
+                {localStorage.getItem("token") ? <SpanStyled onClick={() => deletToken(history)}>Deslogar</SpanStyled> :  <SpanStyled onClick={() => goToLoginPage(history)}>Login</SpanStyled>}
                 
             </Container2>
         </All>

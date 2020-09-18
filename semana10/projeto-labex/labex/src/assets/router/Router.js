@@ -8,7 +8,7 @@ import CreateTripPage from '../components/CreateTripPage'
 import Login from '../components/Login'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import SingUp from '../components/SingUp'
+import SignUp from '../components/SignUp'
 
 import DetailsCandidates from '../components/DetailsCandidates';
 
@@ -24,30 +24,35 @@ const Router = () => {
           <Route exact path="/viagens">
             <Header />
             <ListTripsPage />
+            <Footer />
           </Route>
           <Route exact path="/viagens/detalhes/:id">
             <Header />
             <TripDetailsPage />
+            <Footer />
           </Route>
           <Route exact path="/viagens/formulario/:id">
             <Header />
             <ApplicationFormPage />
+            <Footer />
           </Route>
           <Route exact path="/login">
               <Header />
               <Login />
           </Route>
-          <Route exact path="/login/singup">
+          <Route exact path="/login/signup">
               <Header />
-              <SingUp />
+              <SignUp />
           </Route>
           <Route exact path="/criarViagem">
               <Header />
               <CreateTripPage />
+              <Footer />
           </Route>
           <Route>
               <Header />
               <p>Erro 404</p>
+              <Footer />
           </Route>
         </Switch>
       </BrowserRouter>

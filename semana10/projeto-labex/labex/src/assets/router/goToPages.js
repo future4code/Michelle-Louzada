@@ -16,3 +16,10 @@ export const goToHomePage = (history) => {
   export const goToDetailPage = (history, id) => {
     history.push(`/viagens/detalhes/${id}`);
   };
+  export const goToSignUpPage = (history) => {
+    history.push(`/login/signup`);
+  };
+  export const deletToken = (history) => {
+    localStorage.removeItem("token");
+    history.push(`/login`)
+}
