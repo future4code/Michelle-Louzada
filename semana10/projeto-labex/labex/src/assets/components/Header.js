@@ -72,7 +72,7 @@ export default function Header() {
                     </FormControl>
             </Container1>
             <Container2>
-                {localStorage.getItem("token") ? <SpanStyled onClick={() => goToCreatePage(history) }>criar ciagem</SpanStyled> : <p></p>}
+                {localStorage.getItem("token") ? <SpanStyled onClick={() => goToCreatePage(history) }>criar viagem</SpanStyled> : <p></p>}
                 <SpanStyled onClick={() => goToTripPage(history)}>viagens</SpanStyled>
                 {localStorage.getItem("token") ? <SpanStyled onClick={() => deletToken(history)}>sair</SpanStyled> :  <SpanStyled onClick={() => goToLoginPage(history)}>entrar</SpanStyled>}
                 
