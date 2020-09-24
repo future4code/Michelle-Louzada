@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -22,10 +22,13 @@ const baseUrl = 'https://us-central1-labenu-apis.cloudfunctions.net/generic/plan
 
 function Planner() {
     const [inputValue, setInputValue] = useState("")
+    const [writeTask, setWriteTask] = useState("")
     const [selectValue, setSelectValue] = useState("")
+    const [tasks, setTasks] = useState([])
 
 const onChangeInput = (event) => {
     setInputValue(event.target.value)
+    setWriteTask(inputValue)
 }
 const onChangeSelect = (event) => {
     setSelectValue(event.target.value)
@@ -33,19 +36,58 @@ const onChangeSelect = (event) => {
 
 const createTask = () => {
     const body = {
-        text: inputValue,
+        text: writeTask,
         day: selectValue
     }
     axios.post(baseUrl, body)
 
     .then((response) => {
-        console.log(response)
+        getTask()
+        setInputValue("")
     })
     .catch((error) => {
         console.log(error)
     })
 }
 
+const getTask = () => {
+    axios.get(baseUrl) .then((response) => {
+        setTasks(response.data)
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+}
+
+const deleteTask = (id) => {
+    axios.delete(`${baseUrl}/${id}`) .then((response) => {
+        getTask()
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
+}
+useEffect(() => {
+    getTask();
+  }, []);
+
+const taskDay = (day) => {
+    const renderDay = tasks.map((task) => {
+        if (task.day === day) {
+            return (
+                <div>
+                    <p>
+                        {task.text}{" "}
+                        <button onClick={() => deleteTask(task.id)}>deletar</button>
+                    </p>
+                </div>
+            )
+        }
+    })
+     return renderDay
+}
 
   return (
     <div>
@@ -68,37 +110,37 @@ const createTask = () => {
         <Section>
             <Semana>
                 <h3>Domingo</h3>
-                <div id="domingo"></div>
+                {taskDay("domingo")}
             </Semana>
 
             <Semana>
                 <h3>Segunda-feira</h3>
-                <div id="segunda"></div>
+                {taskDay("segunda")}
             </Semana>
 
             <Semana>
                 <h3>Terça-feira</h3>
-                <div id="terca"></div>
+                {taskDay("terça")}
             </Semana>
     
             <Semana>
                 <h3>Quarta-feira</h3>
-                <div id="quarta"></div>
+                {taskDay("quarta")}
             </Semana>
     
             <Semana>
                 <h3>Quinta-feira</h3>
-                <div id="quinta"></div>
+                {taskDay("quinta")}
             </Semana>
 
             <Semana>                    
                 <h3>Sexta-feira</h3>               
-                <div id="sexta"></div>
+                {taskDay("sexta")}
             </Semana>
 
             <Semana>
                 <h3>Sábado</h3>
-                <div id="sabado"></div>
+                {taskDay("sabado")}
             </Semana>
         </Section>
     </div>
