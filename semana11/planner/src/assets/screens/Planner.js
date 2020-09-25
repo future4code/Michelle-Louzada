@@ -22,13 +22,12 @@ const baseUrl = 'https://us-central1-labenu-apis.cloudfunctions.net/generic/plan
 
 function Planner() {
     const [inputValue, setInputValue] = useState("")
-    const [writeTask, setWriteTask] = useState("")
     const [selectValue, setSelectValue] = useState("")
     const [tasks, setTasks] = useState([])
 
 const onChangeInput = (event) => {
     setInputValue(event.target.value)
-    setWriteTask(inputValue)
+
 }
 const onChangeSelect = (event) => {
     setSelectValue(event.target.value)
@@ -36,7 +35,7 @@ const onChangeSelect = (event) => {
 
 const createTask = () => {
     const body = {
-        text: writeTask,
+        text: inputValue,
         day: selectValue
     }
     axios.post(baseUrl, body)
@@ -77,7 +76,7 @@ const taskDay = (day) => {
     const renderDay = tasks.map((task) => {
         if (task.day === day) {
             return (
-                <div>
+                <div key={task.id}>
                     <p>
                         {task.text}{" "}
                         <button onClick={() => deleteTask(task.id)}>deletar</button>
@@ -92,16 +91,16 @@ const taskDay = (day) => {
   return (
     <div>
         <Header>
-            <label for="tarefa">Nova tarefa:</label>
-            <input type="text" id="tarefa" value={inputValue} onChange={onChangeInput} />
-            <select onChange={onChangeSelect}>
-                <option value="domingo">Domingo</option>
-                <option value="segunda">Segunda-feira</option>
-                <option value="terca">Terça-feira</option>
-                <option value="quarta">Quarta-feira</option>
-                <option value="quinta">Quinta-feira</option>
-                <option value="sexta">Sexta-feira</option>
-                <option value="sabado">Sábado</option>
+            <label htmlFor="tarefa" >Nova tarefa:</label>
+            <input placeholder="tarefa" type="text" id="tarefa" value={inputValue} onChange={onChangeInput} />
+            <select onChange={onChangeSelect} title="Dia da semana">
+                <option value="domingo" data-testid="domingo">Domingo</option> 
+                <option value="segunda" data-testid="segunda">Segunda-feira</option> 
+                <option value="terca" data-testid="terca">Terça-feira</option> 
+                <option value="quarta" data-testid="quarta">Quarta-feira</option> 
+                <option value="quinta" data-testid="quinta">Quinta-feira</option> 
+                <option value="sexta" data-testid="sexta">Sexta-feira</option> 
+                <option value="sabado" data-testid="sabado">Sábado</option> 
             </select>
             <button id="button" onClick={createTask}>Criar tarefa</button>
         </Header>
