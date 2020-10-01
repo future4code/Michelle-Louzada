@@ -19,7 +19,6 @@ function App() {
   return (
     <MuiThemeProvider theme={myTheme}>
       <BrowserRouter>
-        <Header />
         <Router />
       </BrowserRouter>
     </MuiThemeProvider>

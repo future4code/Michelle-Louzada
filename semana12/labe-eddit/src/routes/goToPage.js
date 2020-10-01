@@ -13,3 +13,7 @@ export const goToLoginPage = (history) => {
   export const goToDetailsPage = (history, id) => {
     history.push(`/homepage/${id}`);
   };
+  export const deletToken = (history) => {
+    localStorage.removeItem("token");
+    history.push(`/login`)
+}
