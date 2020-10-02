@@ -20,12 +20,14 @@ import {
   import {goToSignUpPage} from '../../routes/goToPage'
   import { BASE_URL } from '../../constants/urls'
   import axios from 'axios'
+  import Comments from '../../components/Comments'
 
 const CardPost = (props) => {
     const history = useHistory();
     const [counter, setCounter] = useState(0);
     const [clickUp, setClickUp] = useState(false);
     const [clickDown, setClickDown] = useState(true);
+    const [comentado, setComentadoValue] = useState(false)
 
     const timePassed = (createdAt) => {
 
@@ -54,6 +56,7 @@ const CardPost = (props) => {
           return `${months} months ago`
       }
 }
+  
 
   const vote = (choice) => {
     const body = {
@@ -79,7 +82,7 @@ const CardPost = (props) => {
     <PostContainer>
     <DivUpDown>
       {clickUp ? <ArrowUpClick /> : <ArrowUp onClick={() => vote(+1)} />}
-      <p>{counter}</p>
+      <p>{props.votesCount}</p>
       {clickDown ? (
         <ArrowDownClick />
       ) : (
@@ -94,7 +97,8 @@ const CardPost = (props) => {
       <TextPara>{props.text}</TextPara>
       <CommentsContainer>
         <Icon fontSize={"small"} onClick={() => goToSignUpPage(history)} />
-        <CommentTitle>0 comments</CommentTitle>
+        <CommentTitle>{props.commentsCount} comments</CommentTitle>
+        
       </CommentsContainer>
     </DetailContainer>
   </PostContainer>

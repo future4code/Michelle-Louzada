@@ -16,7 +16,6 @@ function Header() {
                     />
                 </Container1>
                 <Container2>
-                    {localStorage.getItem("token") ? <SpanStyled>Bem vindo(a) Michelle!</SpanStyled> : <p></p>}
                     {localStorage.getItem("token") ?  <SpanStyled onClick={() => deletToken(history)}> Logout </SpanStyled> 
                     : <SpanStyled onClick={() => goToLoginPage(history)} >Login </SpanStyled>}
                     {localStorage.getItem("token") ?  <p></p> 

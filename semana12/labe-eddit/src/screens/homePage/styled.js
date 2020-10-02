@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward"
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import Fab from '@material-ui/core/Fab'
 
 export const ArrowUp = styled(ArrowUpwardIcon)`
   cursor: pointer;
@@ -119,4 +120,22 @@ export const Span = styled.span`
 export const User = styled.span`
   display: inline;
   font-weight: bolder
+`
+export const AddPostButton = styled(Fab)`
+  position: fixed !important;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
+  /* @media (max-width: 1645px) {
+    right:24vw;
+  }
+  @media (max-width: 1445px) {
+    right:20vw;
+  }
+  @media (max-width: 1045px) {
+    right:15vw;
+  }
+  @media (max-width: 420px) {
+    right:20px;
+  } */
 `

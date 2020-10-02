@@ -6,7 +6,7 @@ import SignUpPage from '../screens/signUpPage/SignUpPage'
 import DetailPostPage from '../screens/detailPostPage/DetailPostPage'
 import Header from '../components/Header'
 import HomePage from '../screens/homePage/HomePage'
-
+import AddPost from '../screens/addPost/AddPost'
 
 const Router = () => {
   return (
@@ -23,11 +23,15 @@ const Router = () => {
         <Header />
           <HomePage />
         </Route>
-        <Route>
         <Route exact path="/homepage/id">
         <Header />
           <DetailPostPage />
         </Route>
+        <Route exact path="/homepage/addPost">
+          <Header />
+          <AddPost />
+        </Route>
+        <Route>
           <ErrorPage />
         </Route>
       </Switch>

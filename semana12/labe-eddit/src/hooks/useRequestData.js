@@ -12,6 +12,7 @@ const useRequestData = (initialData, endpoint) => {
       }
     })
       .then((response) => {
+        console.log(response)
         setData(response.data.posts)
       })
       .catch((error) => {

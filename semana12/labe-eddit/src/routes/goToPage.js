@@ -17,3 +17,6 @@ export const goToLoginPage = (history) => {
     localStorage.removeItem("token");
     history.push(`/login`)
 }
+export const goToAddPost = (history) => {
+  history.push(`/homepage/addPost`)
+}
