@@ -1,0 +1,16 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "clear && echo \"Starting application...\n\" && tsc && node ./build/index.js",
+    "carros": "clear && echo \"Starting application...\n\" && tsc && node ./build/carros.js",
+    "build": "tsc",
+    "dev": "ts-node-dev ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
