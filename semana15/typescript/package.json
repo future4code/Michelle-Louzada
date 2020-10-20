@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "clear && echo \"Starting application...\n\" && tsc && node ./build/index.js",
+    "start": "clear && echo && tsc && node ./build/Exercicios.js",
     "carros": "clear && echo \"Starting application...\n\" && tsc && node ./build/carros.js",
     "build": "tsc",
     "dev": "ts-node-dev ./src/index.ts",
