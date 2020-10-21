@@ -82,6 +82,7 @@ app.put("/countries/edit/:id", (req: Request, res: Response) => {
         name: string
         capital: string
     }
+
     let errorCode: number = 400
     
     try {
@@ -91,8 +92,16 @@ app.put("/countries/edit/:id", (req: Request, res: Response) => {
             throw new Error()
         }
       
-        let result: country | undefined | bodyExemple = countries.find(
-            (country) => country.id === Number(req.params.id),   
+        let result: country | undefined | void | bodyExemple = countries.forEach(
+            (country) => {
+                if ( country.id === Number(req.params.id)) {
+                    let body: bodyExemple = {
+                        name: country.name,
+                        capital: country.capital
+                    }
+                    let result = body     
+                }
+            }   
             
         )
         if (!req.params.id || !req.body){
