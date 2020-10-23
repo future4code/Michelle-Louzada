@@ -2,6 +2,7 @@ import express, {Request, Response} from 'express';
 import cors from 'cors';
 import { users, User } from './users'
 
+
 const app = express();
 
 app.use(express.json());
@@ -18,11 +19,36 @@ app.get("/users", (req: Request, res: Response): void =>{
     }
 });
 
-app.post("/users", (req: Request, res: Response): void=>{
+app.get("/users/query", (req: Request, res: Response) => {
 
+    let errorCode: number = 400
+    const name = req.query.name
+    const cpf = req.query.cpf
 
     try{
-        const {id, name, cpf, dateOfBirth, saldo, valuePayments, data, description} = req.body;
+
+        const user = users.find((u) => u.name === name && u.cpf === cpf) 
+
+        if (!user) {
+            errorCode = 401
+            throw new Error()
+        }
+
+        res.status(200).send(`Seu saldo é no valor de ${user.balance}`);
+        
+    }catch(error){
+        res.status(400).send({
+            message: `Error searching for balance ${errorCode}`
+
+        });
+    }
+})
+
+app.post("/users", (req: Request, res: Response): void=>{
+    let errorCode: number = 400
+
+    try{
+        const {id, name, cpf, dateOfBirth, balance, valuePayments, date, description} = req.body;
 
         const myDate: Date = new Date()
 
@@ -30,20 +56,24 @@ app.post("/users", (req: Request, res: Response): void=>{
 
         const dateBirth: Date = new Date(`${year}-${month}-${day}`)
 
-        const age: number = 0
+        const ageInMilisseconds: number = myDate.getTime() - dateBirth.getTime()
+
+        let ageInYears: number | any  = ageInMilisseconds / 1000 / 60 / 60 / 24 / 365 
         
-
-
+        if (ageInYears.toFixed(2) < 18 ) {
+            errorCode = 401
+            throw new Error("idade minima 18 anos")
+        }
         const user: User = {
             id,
             name,
             cpf,
             dateOfBirth,
-            saldo,
-            extrato: [
+            balance,
+            extract: [
                 {
                     valuePayments,
-                    data,
+                    date,
                     description
                 }
             ]
@@ -53,12 +83,12 @@ app.post("/users", (req: Request, res: Response): void=>{
         res.status(200).send({message: "User created successfully"});
     }catch(error){
         res.status(400).send({
-            message: "Error inserting for users"
+            message: `Error inserting for users ${errorCode}`
         });
     }
 })
 
-app.put("/users/:id/saldo", (req: Request, res: Response): void=>{
+app.put("/users/:id/add-balance", (req: Request, res: Response): void=>{
     let errorCode: number = 400
 
     try{
@@ -68,11 +98,13 @@ app.put("/users/:id/saldo", (req: Request, res: Response): void=>{
             throw new Error("Authorization invalid")
         }
 
-        const {id, name, cpf, saldo} = req.body;
+        const {name, cpf, balance} = req.body;
 
         const userIndex: number = users.findIndex(
             (u) => u.id === Number(req.params.id)
         )
+
+        let valueToAdd = users[userIndex].balance 
 
         if(userIndex === -1) {
             throw new Error()
@@ -80,7 +112,7 @@ app.put("/users/:id/saldo", (req: Request, res: Response): void=>{
 
         users[userIndex].name = name
         users[userIndex].cpf = cpf
-        users[userIndex].saldo = saldo
+        users[userIndex].balance + valueToAdd
 
         res.status(200).send({message: "User created successfully"});
     }catch(error){
@@ -101,25 +133,31 @@ app.put("/users/:id/pay", (req: Request, res: Response): void=>{
             throw new Error("Authorization invalid")
         }
 
-        const {id, data, extrato, valuePayments, description } = req.body;
+        const { date, valuePayments, description } = req.body;
 
         const userIndex: number = users.findIndex(
             (u) => u.id === Number(req.params.id)
         )
 
-        const saldo = users[userIndex].saldo
+        const saldo = users[userIndex].balance
+
+        const dateNow: Date = new Date()
 
         if(userIndex === -1) {
             errorCode = 404
             throw new Error("id não encontrado")
         }
+       
+        if(date < dateNow){
+
+        }
         if (saldo >= valuePayments) {
 
-            users[userIndex].saldo -= valuePayments
-            users[userIndex].extrato.push(
+            users[userIndex].balance -= valuePayments
+            users[userIndex].extract.push(
             {
                 valuePayments,
-                data,
+                date: dateNow,
                 description
             }
         )

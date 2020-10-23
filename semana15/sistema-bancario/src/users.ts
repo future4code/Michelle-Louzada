@@ -1,6 +1,6 @@
 type Payments = {
     valuePayments: number,
-    data: Date | string,
+    date: Date | string,
     description: string
 }
 
@@ -10,8 +10,8 @@ export type User = {
     name: string,
     cpf: string,
     dateOfBirth: string | Date,
-    saldo: number,
-    extrato: Payments[]
+    balance: number,
+    extract: Payments[]
 }
 
  export let users: User[] = [
@@ -20,11 +20,11 @@ export type User = {
         name: "Alice",
         cpf: "125-256-456-12",
         dateOfBirth: "12/03/1997",
-        saldo: 100.00,
-        extrato: [
+        balance: 100.00,
+        extract: [
             {
                 valuePayments: 0.00,
-                data: "",
+                date: "",
                 description: ""
             }
         ]
@@ -34,11 +34,11 @@ export type User = {
         name: "Ana",
         cpf: "125-256-456-13",
         dateOfBirth: "12/03/1980",
-        saldo: 0.00,
-        extrato: [
+        balance: 0.00,
+        extract: [
             {
                 valuePayments: 50.00,
-                data: "12/10/2019",
+                date: "12/10/2019",
                 description: "compras no supermercado"
             }
         ]
