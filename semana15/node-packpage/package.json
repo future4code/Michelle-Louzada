@@ -1,0 +1,16 @@
+{
+  "name": "node-packpage",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "add": "node index.js 7 7",
+    "sub": "node index.js 15 6",
+    "mult": "node index.js 15 6",
+    "div": "node index.js 15 6"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
