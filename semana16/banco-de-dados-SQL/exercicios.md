@@ -61,5 +61,35 @@ Adicionando o valor (name) e o nome "Reynaldo Gianecchini".
 
 e)
 Código de erro: 1292. Valor de data incorreto: '1950' para a coluna 'birth_date' na linha 1.
+A data que estava na query estava fora "" então não reconhecia, o certo é:
+~~~SQL
+INSERT INTO Actor (id, name, salary, birth_date, gender)
+VALUES(
+  "005", 
+  "Juliana Paes",
+  719333.33,
+  "1979-03-26", 
+  "female"
+);
+~~~
+Antes estava 1979-03-26 sem os "".
 
+f)
+~~~SQL
+INSERT INTO Actor (id, name, salary, birth_date, gender)
+VALUES(
+  "006", 
+  "Rodrigo Santoro",
+  819333.33,
+  "1975-08-22", 
+  "male"
+);
+~~~
+
+#### Exercício 3
+ 
+ a) 
+~~~SQL
+SELECT * from Actor WHERE gender = "female"
+~~~
 
