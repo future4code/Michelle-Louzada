@@ -16,3 +16,11 @@ export type UserInput = {
   cypherPassword: string,
   role: USER_ROLES
 }
+
+export type Cep = {
+  id: string,
+  bairro: string,
+  cidade: string,
+  estado: string
+}
+
