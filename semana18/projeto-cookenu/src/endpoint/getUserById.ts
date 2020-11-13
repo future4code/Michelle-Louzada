@@ -34,7 +34,7 @@ export const getUserById = async (
            message === "jwt expired"
         ) {
            res.statusCode = 401
-           message = "Não autorizado"
+           message = "not authorized"
         }
   
         res.send({

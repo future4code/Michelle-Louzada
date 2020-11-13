@@ -1,9 +1,10 @@
 import { Request, Response } from "express"
-import { User } from "../types/types";
-import { selectUser } from "../data/selectUser";
+import { Recipe } from "../types/types";
 import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { selectRecipes } from "../data/selectRecipes";
+import { formatDateStr } from "../functions/handleDate";
 
-export const getProfile = async (
+export const getRecipesById = async (
     req: Request, res: Response
 ): Promise<void> => {
     try {
@@ -11,19 +12,21 @@ export const getProfile = async (
 
         const tokenData: AuthenticationData = await getTokenData(token)
         
+        const id: string = req.params.id;
 
-        const user: User = (await (selectUser(tokenData.id)))[0];
+        const recipe: Recipe = (await (selectRecipes(id)))[0];
 
-        if(!user) {
+        if(!recipe) {
             throw new Error("'id' not registered");
         }
 
-        res.status(200).send({ message: {
-            name: user.name,
-            email: user.email,
-            id: user.id
-        }});
-        
+        res.status(200).send({
+            recipe: {
+              ...recipe, 
+              createdAt: formatDateStr(recipe.createdAt),
+            }
+          });    
+          
     } catch (error) {
         let { message } = error
   

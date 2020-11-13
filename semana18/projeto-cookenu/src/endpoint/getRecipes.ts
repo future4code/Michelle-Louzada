@@ -1,9 +1,10 @@
 import { Request, Response } from "express"
-import { User } from "../types/types";
-import { selectUser } from "../data/selectUser";
+import { Recipe } from "../types/types";
 import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { formatDateStr } from "../functions/handleDate";
+import { selectAllRecipes } from '../data/selectAllRecipes'
 
-export const getProfile = async (
+export const getRecipes = async (
     req: Request, res: Response
 ): Promise<void> => {
     try {
@@ -12,18 +13,19 @@ export const getProfile = async (
         const tokenData: AuthenticationData = await getTokenData(token)
         
 
-        const user: User = (await (selectUser(tokenData.id)))[0];
+        const recipe: Recipe[] = (await (selectAllRecipes()));
 
-        if(!user) {
-            throw new Error("'id' not registered");
+        if(!recipe) {
+            throw new Error("there is no recipe");
         }
 
-        res.status(200).send({ message: {
-            name: user.name,
-            email: user.email,
-            id: user.id
-        }});
-        
+        res.status(200).send({
+            recipe: {
+              ...recipe, 
+              
+            }
+          });    
+          
     } catch (error) {
         let { message } = error
   

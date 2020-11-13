@@ -7,6 +7,11 @@ import { createUser } from "./endpoint/createUser";
 import login from "./endpoint/login";
 import { getProfile } from "./endpoint/getProfile";
 import { getUserById } from "./endpoint/getUserById";
+import { createRecipe } from "./endpoint/createRecipe";
+import { getRecipesById } from "./endpoint/getRecipesById";
+import { followUser } from "./endpoint/followUser";
+import { unfollowUser } from "./endpoint/unFollowUser";
+import {getRecipes} from './endpoint/getRecipes'
 
 dotenv.config();
 
@@ -29,9 +34,21 @@ app.post("/signup", createUser);
 
 app.post("/login", login);
 
+app.get("/user/feed", getRecipes);
+
 app.get("/user/profile", getProfile);
 
 app.get("/user/:id", getUserById);
+
+app.post("/recipe", createRecipe);
+
+app.get("/recipe/:id", getRecipesById);
+
+app.post("/user/follow", followUser);
+
+app.post("/user/unfollow", unfollowUser);
+
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
