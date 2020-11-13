@@ -13,7 +13,8 @@ export default async function selectUserByEmail(
          id: result[0].id,
          email: result[0].email,
          password: result[0].password,
-         name: result[0].name
+         name: result[0].name,
+         role: result[0].role
       }
 
    } catch (error) {

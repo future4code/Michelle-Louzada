@@ -1,8 +1,5 @@
 import * as jwt from "jsonwebtoken"
-
-export type AuthenticationData = {
-   id: string,
-}
+import { AuthenticationData } from "../types/types"
 
 export function generateToken(
    payload: AuthenticationData

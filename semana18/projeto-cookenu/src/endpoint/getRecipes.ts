@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { Recipe } from "../types/types";
-import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { AuthenticationData, Recipe } from "../types/types";
+import { getTokenData } from "../services/authenticator";
 import { formatDateStr } from "../functions/handleDate";
 import { selectAllRecipes } from '../data/selectAllRecipes'
 
@@ -20,10 +20,7 @@ export const getRecipes = async (
         }
 
         res.status(200).send({
-            recipe: {
-              ...recipe, 
-              
-            }
+            recipe
           });    
           
     } catch (error) {

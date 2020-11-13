@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
-import { User } from "../types/types";
+import { AuthenticationData, User } from "../types/types";
 import { selectUser } from "../data/selectUser";
-import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { getTokenData } from "../services/authenticator";
 
 export const getProfile = async (
     req: Request, res: Response

@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
-import { Follow, User } from "../types/types";
+import { AuthenticationData, Follow, User } from "../types/types";
 import { selectUser } from "../data/selectUser";
-import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { getTokenData } from "../services/authenticator";
 import { insertFollows } from "../data/insertFollow";
 
 export const followUser = async (

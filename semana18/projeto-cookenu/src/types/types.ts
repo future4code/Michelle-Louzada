@@ -2,14 +2,16 @@ export type User = {
     id: string,
     email: string,
     password: string,
-    name: string
+    name: string,
+    role: USER_ROLES
   }
 
   export type UserInput = {
     id: string,
     email: string,
     cypherPassword: string,
-    name: string
+    name: string,
+    role: USER_ROLES
   }
 
   export type Recipe = {
@@ -37,3 +39,12 @@ export type User = {
     id: string,
     unfollowerId: string
   }
+  export type AuthenticationData = {
+    id: string,
+    role: USER_ROLES
+ }
+ 
+ export enum USER_ROLES {
+  NORMAL = 'NORMAL',
+  ADMIN = 'ADMIN'
+}

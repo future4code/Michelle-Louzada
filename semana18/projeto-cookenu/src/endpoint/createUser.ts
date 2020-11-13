@@ -10,9 +10,9 @@ export const createUser = async (
   req: Request, res: Response
 ): Promise<void> => {
   try {
-    const {email, password, name} = req.body;
+    const {email, password, name, role} = req.body;
 
-    if( !email || !password){
+    if( !email || !password || !role ){
       throw new Error("Missing data for requested operation");
     }
 
@@ -32,7 +32,7 @@ export const createUser = async (
 
     const cypherPassword = await hash(password);
     
-    const data: UserInput = {id, email, cypherPassword, name }
+    const data: UserInput = {id, email, cypherPassword, name, role }
 
     await insertUser (data)
       
@@ -40,6 +40,7 @@ export const createUser = async (
 
     const token: string = generateToken({
         id,
+        role
      })
 
     res.status(201).send({

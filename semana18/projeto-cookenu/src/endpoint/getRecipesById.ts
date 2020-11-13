@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import { Recipe } from "../types/types";
-import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { AuthenticationData, Recipe } from "../types/types";
+import { getTokenData } from "../services/authenticator";
 import { selectRecipes } from "../data/selectRecipes";
 import { formatDateStr } from "../functions/handleDate";
 

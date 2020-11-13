@@ -1,10 +1,10 @@
 import { Request, Response } from "express"
 import { dateNow, formatDateStr, formatDateToDB } from "../functions/handleDate"
-import { InputRecipe, Recipe, User } from "../types/types";
+import { AuthenticationData, InputRecipe, Recipe, User } from "../types/types";
 import { generateId } from "../services/idGenerator";
 import {insertRecipe} from '../data/insertRecipe'
 import {selectRecipes} from '../data/selectRecipes'
-import { AuthenticationData, getTokenData } from "../services/authenticator";
+import { getTokenData } from "../services/authenticator";
 import { selectUser } from "../data/selectUser";
 
 export const createRecipe = async (
