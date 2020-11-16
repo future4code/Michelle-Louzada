@@ -3,7 +3,6 @@ import { InputRecipe } from "../types/types";
 
 export const insertRecipe = async (data: InputRecipe): Promise<void> => {
   const {id, title, description, createdAt, userId, userName} = data;
-  console.log(createdAt)
   await connection ("recipes_cookenu")
     .insert({
       id_recipe: id,

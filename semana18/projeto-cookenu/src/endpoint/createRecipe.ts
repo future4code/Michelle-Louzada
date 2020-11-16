@@ -41,10 +41,6 @@ export const createRecipe = async (
         res.statusCode = 406;
         throw new Error("'id' already registered");
       }
-      if(recipe.title === title){
-        res.statusCode = 406;
-        throw new Error("'title' already registered");
-      }
     });
     
     const data: InputRecipe = {id, title, description, createdAt, userId, userName}
