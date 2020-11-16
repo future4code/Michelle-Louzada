@@ -11,10 +11,12 @@ export const getRecipesById = async (
         const token: string = req.headers.authorization as string
 
         const tokenData: AuthenticationData = await getTokenData(token)
+
+        const userId: string = tokenData.id
         
         const id: string = req.params.id;
 
-        const recipe: Recipe = (await (selectRecipes(id)))[0];
+        const recipe: Recipe = (await (selectRecipes(id, userId)))[0];
 
         if(!recipe) {
             throw new Error("'id' not registered");

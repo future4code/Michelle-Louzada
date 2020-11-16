@@ -51,7 +51,7 @@ export const createRecipe = async (
 
     await insertRecipe(data);
 
-    const createdRecipe: Recipe = (await selectRecipes(id))[0];
+    const createdRecipe: Recipe = (await selectRecipes(id, title))[0];
 
     res.status(201).send({
       message: "Success creating Recipe",

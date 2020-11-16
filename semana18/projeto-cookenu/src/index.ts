@@ -10,8 +10,11 @@ import { getUserById } from "./endpoint/getUserById";
 import { createRecipe } from "./endpoint/createRecipe";
 import { getRecipesById } from "./endpoint/getRecipesById";
 import { followUser } from "./endpoint/followUser";
-import { unfollowUser } from "./endpoint/unFollowUser";
+import { unfollowUser } from "./endpoint/unfollowUser";
 import {getRecipes} from './endpoint/getRecipes'
+import editRecipe from "./endpoint/editRecipe";
+import deleteRecipe from "./endpoint/deleteRecipe";
+import { resetPassword } from "./endpoint/resetPassword";
 
 dotenv.config();
 
@@ -48,7 +51,11 @@ app.post("/user/follow", followUser);
 
 app.post("/user/unfollow", unfollowUser);
 
+app.put("/recipe/:id", editRecipe);
 
+app.delete("/recipe/delete/:id", deleteRecipe)
+
+app.post('/user/password/reset', resetPassword)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {

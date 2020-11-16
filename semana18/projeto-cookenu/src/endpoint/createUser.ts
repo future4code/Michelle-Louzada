@@ -41,6 +41,7 @@ export const createUser = async (
     const token: string = generateToken({
         id,
         role
+        
      })
 
     res.status(201).send({

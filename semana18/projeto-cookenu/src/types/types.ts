@@ -18,7 +18,9 @@ export type User = {
     id: string,
     title: string,
     description: string,
-    createdAt: Date
+    createdAt: Date,
+    userId: string,
+    userName: string
   }
 
   export type InputRecipe = {
@@ -28,6 +30,14 @@ export type User = {
     createdAt: string,
     userId: string,
     userName: string
+  }
+
+  export type UpdateRecipe = {
+    id: string,
+    title: string,
+    description: string,
+    createdAt: string,
+    userId: string,
   }
 
   export type Follow = {
