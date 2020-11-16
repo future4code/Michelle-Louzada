@@ -3,7 +3,7 @@ import { dateNow, formatDateStr, formatDateToDB } from "../functions/handleDate"
 import { AuthenticationData, InputRecipe, Recipe, User } from "../types/types";
 import { generateId } from "../services/idGenerator";
 import {insertRecipe} from '../data/insertRecipe'
-import {selectRecipes} from '../data/selectRecipes'
+import {selectRecipe} from '../data/selectRecipe'
 import { getTokenData } from "../services/authenticator";
 import { selectUser } from "../data/selectUser";
 
@@ -35,7 +35,7 @@ export const createRecipe = async (
 
     const id: string = generateId()
 
-    const recipes: Recipe[] = await selectRecipes(id, title);
+    const recipes: Recipe[] = await selectRecipe(id, title);
     recipes.forEach(recipe => {
       if(recipe.id === id){
         res.statusCode = 406;
@@ -47,7 +47,7 @@ export const createRecipe = async (
 
     await insertRecipe(data);
 
-    const createdRecipe: Recipe = (await selectRecipes(id, title))[0];
+    const createdRecipe: Recipe = (await selectRecipe(id, title))[0];
 
     res.status(201).send({
       message: "Success creating Recipe",

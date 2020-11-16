@@ -1,5 +1,5 @@
 import { Response, Request } from 'express'
-import { selectRecipes } from '../data/selectRecipes'
+import { selectRecipe } from '../data/selectRecipe'
 import {updateRecipe}  from '../data/updateRecipe'
 import { dateNow, formatDateStr, formatDateToDB } from '../functions/handleDate'
 import { getTokenData } from '../services/authenticator'
@@ -17,6 +17,8 @@ export default async function editRecipe(
 
         const userId: string = tokenData.id
 
+        const userRole: string = tokenData.role
+
         const {title, description } = req.body;
 
         const createdAt = formatDateToDB(dateNow())
@@ -30,9 +32,9 @@ export default async function editRecipe(
 
         const id: string = req.params.id;
 
-        const recipes: Recipe[] = await selectRecipes(id, userId);
+        const recipes: Recipe[] = await selectRecipe(id, userId);
         recipes.forEach(recipe => {
-            if(recipe.userId !== userId) {
+            if(recipe.userId !== userId && userRole !== "ADMIN") {
                 res.statusCode = 406;
                 throw new Error("the user can only update his own posted recipes");
             }
@@ -46,7 +48,7 @@ export default async function editRecipe(
 
         await updateRecipe(data)
 
-        const updateRec: Recipe = (await selectRecipes(id, title))[0];
+        const updateRec: Recipe = (await selectRecipe(id, title))[0];
 
         res.status(200).send({
             messege: "recipe updated successfully!",

@@ -1,5 +1,5 @@
 import { Response, Request } from 'express'
-import { selectRecipes } from '../data/selectRecipes'
+import { selectRecipe } from '../data/selectRecipe'
 import { selectUser } from '../data/selectUser'
 import { getTokenData } from '../services/authenticator'
 import { AuthenticationData, Recipe} from '../types/types'
@@ -21,9 +21,9 @@ export default async function deleteRecipe(
 
         const id: string = req.params.id;
 
-        const recipes: Recipe[] = await selectRecipes(id, userId);
+        const recipes: Recipe[] = await selectRecipe(id, userId);
         recipes.forEach(recipe => {
-            if(recipe.userId !== userId || userRole !== "ADMIN" ) {
+            if(recipe.userId !== userId && userRole !== "ADMIN" ) {
                 res.statusCode = 406;
                 throw new Error("'NORMAL' users can only delete their own recipes");
             }

@@ -1,7 +1,7 @@
 import { connection } from ".."
 import { Recipe } from "../types/types";
 
-export const selectRecipes = async (
+export const selectRecipe = async (
   id: string, userId: string, title: string | null = null
 ): Promise<Recipe[]> => {
   return await connection("recipes_cookenu").select(

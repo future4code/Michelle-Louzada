@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { AuthenticationData, Recipe } from "../types/types";
 import { getTokenData } from "../services/authenticator";
-import { selectRecipes } from "../data/selectRecipes";
+import { selectRecipe } from "../data/selectRecipe";
 import { formatDateStr } from "../functions/handleDate";
 
 export const getRecipesById = async (
@@ -16,7 +16,7 @@ export const getRecipesById = async (
         
         const id: string = req.params.id;
 
-        const recipe: Recipe = (await (selectRecipes(id, userId)))[0];
+        const recipe: Recipe = (await (selectRecipe(id, userId)))[0];
 
         if(!recipe) {
             throw new Error("'id' not registered");
