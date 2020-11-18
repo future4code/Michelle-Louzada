@@ -22,8 +22,9 @@ export default async function createPost(
     }
 
     const result = await createPostBusiness(input, token);
+
  
-       res.status(201).send({ message })
+       res.status(201).send({ message, result})
  
     } catch (error) {
        let message = error.sqlMessage || error.message

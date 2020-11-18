@@ -1,9 +1,15 @@
-import { connection } from "../..";
-import { UserInsert } from "../../model/User";
+import { connection } from "../connection"
+import { PostData } from "../../model/Post";
 
-export const insertUser = async (data: UserInsert ): Promise<void> => {
-  const {id, email, cypherPassword, name } = data;
-  const password = cypherPassword
-  await connection ("labook_users")
-    .insert({id, email, password, name});
+export const insertPost = async (data: PostData): Promise<void> => {
+  const {id, photo, description, authorId, createdAt, type} = data;
+  await connection ("labook_posts")
+    .insert({
+      id,
+      photo,
+      description,
+      createdAt,
+      type,
+      author_id: authorId
+    });
 }

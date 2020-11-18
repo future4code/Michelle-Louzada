@@ -4,7 +4,7 @@ import { InputLogin, User } from "../../model/User";
 import { generateToken } from "../../services/authenticator";
 
 
-export const loginBusiness = async (input: InputLogin): Promise<void> => {
+export const loginBusiness = async (input: InputLogin): Promise<string> => {
 
     let message = "Success!"
 

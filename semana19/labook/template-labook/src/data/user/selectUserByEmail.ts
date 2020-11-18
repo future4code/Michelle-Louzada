@@ -1,4 +1,4 @@
-import { connection } from "../.."
+import { connection } from "../connection"
 import { User } from "../../model/User"
 
 export default async function selectUserByEmail(

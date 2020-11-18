@@ -1,5 +1,4 @@
-
-import { connection } from "../..";
+import { connection } from "../connection"
 import { UserInsert } from "../../model/User";
 
 export const insertUser = async (data: UserInsert ): Promise<void> => {
