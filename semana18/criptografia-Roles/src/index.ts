@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import { createUser } from "./endpoint/createUser";
 import login from "./endpoint/loginUser";
+import { resetPassword } from "./endpoint/resetPassword";
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use(cors());
 app.post("/user/signup", createUser);
 
 app.post("/user/login", login)
+
+app.post('/user/password/reset', resetPassword)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
