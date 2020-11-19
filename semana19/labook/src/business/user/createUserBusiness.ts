@@ -1,6 +1,6 @@
-import { connection } from "../.."
-import { insertUser } from "../../data/user/insertUser"
-import { InputUser, UserInsert } from "../../model/User"
+
+import userDatabase from "../../data/user/userDatabase"
+import { InputUser, UserClass } from "../../model/User"
 import { generateToken } from "../../services/authenticator"
 import { hash } from "../../services/hashManager"
 import { generateId } from "../../services/idGenerator"
@@ -11,20 +11,20 @@ export const createUserBusiness = async (input: InputUser): Promise<string> => {
     try {
         let message = "Success!"
 
-        const { name, email, password } = input
+        const { name, email } = input
 
-        if (!name || !email || !password) {
+        if (!name || !email || !input.password) {
             message = '"name", "email" and "password" must be provided'
             throw new Error(message)
          }
    
          const id: string = generateId()
    
-         const cypherPassword = await hash(input.password);
+         const password = await hash(input.password);
 
-         const data: UserInsert = {id, name, email, cypherPassword}
+         const data: UserClass = new UserClass (id, name, email, password)
    
-         await insertUser (data)
+         await userDatabase.signup (data)
    
          const token: string = generateToken({ id })
          return token

@@ -8,8 +8,8 @@ enum POST_TYPES {
     photo: string,
     description: string,
     type: POST_TYPES,
-    createdAt: Date,
-    authorId: string
+    createdAt: string,
+    author_id: string
  }
 
  export type PostData = {
@@ -25,6 +25,47 @@ enum POST_TYPES {
     photo: string,
     description: string,
     type: POST_TYPES
+ }
+
+ export class PostClass {
+    private id: string
+    private description: string
+    private photo: string
+    private createdAt: string
+    private type: POST_TYPES
+    private author_id: string
+ 
+    constructor(
+       id: string,
+       description: string,
+       photo: string,
+       createdAt: string,
+       type: string,
+       authorId: string
+ 
+    ) {
+       this.id = id
+       this.description = description
+       this.photo = photo
+       this.createdAt = createdAt
+       this.author_id = authorId
+
+    if (type.toUpperCase() === POST_TYPES.EVENT) {
+        this.type = POST_TYPES.EVENT
+     } else if (type.toUpperCase() === POST_TYPES.NORMAL) {
+        this.type =  POST_TYPES.NORMAL
+     } else {
+        throw new Error("Envie um User Role válido. Os valores válidos são ADMIN ou NORMAL")
+     }
+    }
+ 
+    public getId = (): string => this.id
+    public getDescription = (): string => this.description
+    public getPhoto = (): string => this.photo
+    public getCreatedAt = (): Date => this.createdAt
+    public getAuthorId = (): string => this.author_id
+    public getType = (): POST_TYPES => this.type
+ 
  }
 
  export function stringToPostRole(role: string): POST_TYPES {

@@ -18,20 +18,7 @@ export const getPostByIdBusiness = async (id: string, token: string): Promise<Po
          throw new Error("'id' not registered");
          }
 
-         if (!post[0]) {
-            message = "Post not found"
-            throw new Error(message)
-         }
-   
-         const result: Post = {
-            id:post[0].id,
-            photo:post[0].photo,
-            description:post[0].description,
-            type:post[0].type,
-            createdAt:post[0].created_at,
-            authorId:post[0].author_id,
-         }
-         return result
+         return post
 
     }catch (error) {
         throw new Error(error.message);

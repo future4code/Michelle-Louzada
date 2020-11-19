@@ -4,6 +4,8 @@ import cors from "cors"
 import { userRouter } from './routes/userRoutes'
 import { postRouter } from './routes/postRoutes'
 
+console.log("salve")
+
 const app: Express = express()
 app.use(express.json())
 app.use(cors())

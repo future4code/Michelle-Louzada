@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { getPostByIdBusiness } from "../../business/post/getPostByIdBusiness";
+import { PostClass } from "../../model/Post";
 
 export default async function getPostById(
    req: Request,
    res: Response
-): Promise<void> {
+): Promise<PostClass> {
 
     try {
        let message = "Success!"
@@ -13,7 +14,7 @@ export default async function getPostById(
 
        const id: string  = req.params.id
 
-       const result = await getPostByIdBusiness(id, token);
+       const result: PostClass = await getPostByIdBusiness(id, token);
  
        res.status(200).send({ message, result })
  
