@@ -1,6 +1,5 @@
-import { PostClass } from "../../model/Post";
-import { UserClass } from "../../model/User"
-import { connection } from "../connection";
+import { PostClass } from "../model/Post";
+import { connection } from "./connection";
 
 class PostDatabase {
 

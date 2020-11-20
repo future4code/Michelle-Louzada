@@ -1,6 +1,6 @@
 enum POST_TYPES {
-    NORMAL = "normal",
-    EVENT = "event"
+    NORMAL = "NORMAL",
+    EVENT = "EVENT"
  }
  
  export type Post = {
@@ -55,14 +55,14 @@ enum POST_TYPES {
      } else if (type.toUpperCase() === POST_TYPES.NORMAL) {
         this.type =  POST_TYPES.NORMAL
      } else {
-        throw new Error("Envie um User Role válido. Os valores válidos são ADMIN ou NORMAL")
+        throw new Error("Envie um User Role válido. Os valores válidos são EVENT ou NORMAL")
      }
     }
  
     public getId = (): string => this.id
     public getDescription = (): string => this.description
     public getPhoto = (): string => this.photo
-    public getCreatedAt = (): Date => this.createdAt
+    public getCreatedAt = (): string => this.createdAt
     public getAuthorId = (): string => this.author_id
     public getType = (): POST_TYPES => this.type
  

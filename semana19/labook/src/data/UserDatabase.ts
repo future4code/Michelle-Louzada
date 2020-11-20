@@ -1,5 +1,5 @@
-import { UserClass } from "../../model/User"
-import { connection } from "../connection";
+import { UserClass } from "../model/User"
+import { connection } from "./connection";
 
 class UserDatabase {
 
