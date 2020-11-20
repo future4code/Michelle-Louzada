@@ -21,7 +21,7 @@ class PostController {
          const input: InputPost = {
           photo,
           description,
-          type: stringToPostRole(type)
+          type,
       }
   
       const result = await PostBusiness.createPost(input, token);

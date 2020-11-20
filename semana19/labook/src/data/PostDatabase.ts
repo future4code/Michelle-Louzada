@@ -18,7 +18,7 @@ class PostDatabase {
                 photo: post.getPhoto(),
                 author_id: post.getAuthorId(),
                 type: post.getType(),
-                createdAt: post.getCreatedAt()
+                created_at: post.getCreatedAt()
              }).into(this.tableName)
           } catch (error) {
              throw new Error("Erro de banco de dados: " + error.sqlMessage);

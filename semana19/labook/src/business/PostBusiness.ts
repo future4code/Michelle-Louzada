@@ -1,4 +1,4 @@
-import { InputPost, PostClass } from "../model/Post"
+import { dateH, InputPost, PostClass } from "../model/Post"
 import { AuthenticationData } from "../model/User"
 import {formatDateToDB, dateNow} from '../model/Post'
 import postDatabase from "../data/PostDatabase"
@@ -12,15 +12,15 @@ class PostBusiness {
         const { photo, description, type } = input
         try{
             
-           const tokenData: AuthenticationData = authenticator.getTokenData(token)
+            const tokenData: AuthenticationData = authenticator.getTokenData(token)
     
-           const author_id: string = tokenData.id
+            const author_id: string = tokenData.id
      
-           const id: string = idGenerator.generateId()
+            const id: string = idGenerator.generateId()
     
-           const createdAt = formatDateToDB(dateNow())
+            const createdAt = dateH()
     
-           const data: PostClass = new PostClass (id, photo, description, type, author_id, createdAt)
+            const data: PostClass = new PostClass (id, description, photo, createdAt, type, author_id)
        
             await postDatabase.createPost(data)
     
