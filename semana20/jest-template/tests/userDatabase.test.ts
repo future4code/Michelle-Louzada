@@ -17,19 +17,19 @@ describe("Create User", () => {
 
          const user: any = await userDatabase.getUserById("12345")
 
-         const buyItem: any = await userController.buyItens()
+         const buyItem: any = await userController.buyItens(400.00, "12345")
 
 
-         expect(user.name).toEqual("nome")
-         expect(user.balance).toBe(100.00)
-         expect(buyItem).toBe(400.00)
+         expect(user.name).toEqual("Michelle")
+         expect(user.balance).toEqual(100.00)
+
       } catch (error) {
 
       }
    })
 
    test("Fail case", async () => {
-      expect.assertions(1)
+      expect.assertions(2)
 
       try {
          await userDatabase.createUser(
@@ -37,8 +37,14 @@ describe("Create User", () => {
             "Michelle",
             500.00
          )
+
+        const buyItem: any = await userController.buyItens(550.00, "12345")
+  
+
       } catch (error) {
          expect(error.sqlMessage).not.toBe(undefined)
+         expect(error.buyItem).toThrowError(Error)
+
       }
    })
 
