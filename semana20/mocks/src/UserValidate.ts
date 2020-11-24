@@ -28,6 +28,7 @@ class UserValidate {
       defender.life -= attacker.strength - defender.defense;
     }
   };
+  
   public performAttack2 = (
     attacker: Character,
     defender: Character,

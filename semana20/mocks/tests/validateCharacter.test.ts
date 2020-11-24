@@ -72,4 +72,16 @@ describe("Validate empty properties", () => {
                 
         expect(result).toBe(false)
         })
+
+        test("life is negative", () => {
+
+            const result: boolean = userValidate.validateCharacter({
+                name: "Sam",
+                life: -30,
+                strength: 50,
+                defense: 40
+            })
+                    
+            expect(result).toBe(false)
+            })
  })

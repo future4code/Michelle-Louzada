@@ -4,3 +4,5 @@ export interface Character {
     strength: number;
     defense: number;
   }
+
+ 
